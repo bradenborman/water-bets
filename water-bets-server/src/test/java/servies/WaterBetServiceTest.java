@@ -38,7 +38,6 @@ class WaterBetServiceTest {
 
         waterBet.setOfferedTime(DateTimeUtility.toStandardStorageFormat(LocalDateTime.now()));
         waterBet.setAcceptByExpirationDate(DateTimeUtility.toStandardStorageFormat(LocalDateTime.now().plusHours(8)));
-        waterBet.setPublicBet(true);
 
         Assertions.assertDoesNotThrow(() -> {
             waterBetService.createNewWaterBet(waterBet);

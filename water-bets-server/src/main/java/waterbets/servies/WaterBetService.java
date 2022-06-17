@@ -13,7 +13,7 @@ public class WaterBetService {
 
     private static final Logger logger = LoggerFactory.getLogger(WaterBetService.class);
 
-    private WaterBetDao waterBetDao;
+    private final WaterBetDao waterBetDao;
 
     public WaterBetService(WaterBetDao waterBetDao) {
         this.waterBetDao = waterBetDao;
@@ -30,4 +30,8 @@ public class WaterBetService {
         waterBetDao.createNewWaterBet(waterBet);
     }
 
+    public List<WaterBet> getWaterBetsByGroupId(int lobbyId) {
+        logger.info("Getting all water bets for lobby {}", lobbyId);
+        return waterBetDao.getWaterBetsByLobbyId(lobbyId);
+    }
 }

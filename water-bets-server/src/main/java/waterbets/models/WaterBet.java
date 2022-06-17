@@ -3,17 +3,29 @@ package waterbets.models;
 import waterbets.models.enums.AcceptanceStatus;
 import waterbets.models.enums.BetStatus;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class WaterBet {
 
+    private int groupId;
     private int offeringUsersId;
     private int receiversUserId;
     private String bet;
-    private double wagerAmount;
+    private int wagerAmount;
     private AcceptanceStatus acceptanceStatus;
     private BetStatus betStatus;
     private String offeredTime;
     private String acceptByExpirationDate;
-    private boolean publicBet;
+    private List<WaterBetComment> comments = new ArrayList<>();
+
+    public int getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(int groupId) {
+        this.groupId = groupId;
+    }
 
     public int getOfferingUsersId() {
         return offeringUsersId;
@@ -39,11 +51,11 @@ public class WaterBet {
         this.bet = bet;
     }
 
-    public double getWagerAmount() {
+    public int getWagerAmount() {
         return wagerAmount;
     }
 
-    public void setWagerAmount(double wagerAmount) {
+    public void setWagerAmount(int wagerAmount) {
         this.wagerAmount = wagerAmount;
     }
 
@@ -79,11 +91,16 @@ public class WaterBet {
         this.acceptByExpirationDate = acceptByExpirationDate;
     }
 
-    public boolean isPublicBet() {
-        return publicBet;
+    public List<WaterBetComment> getComments() {
+        return comments;
     }
 
-    public void setPublicBet(boolean publicBet) {
-        this.publicBet = publicBet;
+    public void setComments(List<WaterBetComment> comments) {
+        this.comments = comments;
     }
+
+    public void addComment(WaterBetComment comment) {
+        comments.add(comment);
+    }
+
 }

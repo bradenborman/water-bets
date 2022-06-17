@@ -13,7 +13,7 @@ public class DateTimeUtility {
             .appendOptional(DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm a"))
             .toFormatter();
 
-    public static LocalDateTime toStandardStorageFormat(String dateTime) {
+    public static LocalDateTime parseDate(String dateTime) {
         String slashDateTime = dateTime.replace("-", "/");
         return LocalDateTime.parse(slashDateTime, DATE_TIME_FORMATS);
     }
