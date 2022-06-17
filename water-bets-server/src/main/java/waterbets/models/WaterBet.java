@@ -1,0 +1,89 @@
+package waterbets.models;
+
+import waterbets.models.enums.AcceptanceStatus;
+import waterbets.models.enums.BetStatus;
+
+public class WaterBet {
+
+    private int offeringUsersId;
+    private int receiversUserId;
+    private String bet;
+    private double wagerAmount;
+    private AcceptanceStatus acceptanceStatus;
+    private BetStatus betStatus;
+    private String offeredTime;
+    private String acceptByExpirationDate;
+    private boolean publicBet;
+
+    public int getOfferingUsersId() {
+        return offeringUsersId;
+    }
+
+    public void setOfferingUsersId(int offeringUsersId) {
+        this.offeringUsersId = offeringUsersId;
+    }
+
+    public int getReceiversUserId() {
+        return receiversUserId;
+    }
+
+    public void setReceiversUserId(int receiversUserId) {
+        this.receiversUserId = receiversUserId;
+    }
+
+    public String getBet() {
+        return bet;
+    }
+
+    public void setBet(String bet) {
+        this.bet = bet;
+    }
+
+    public double getWagerAmount() {
+        return wagerAmount;
+    }
+
+    public void setWagerAmount(double wagerAmount) {
+        this.wagerAmount = wagerAmount;
+    }
+
+    public AcceptanceStatus getAcceptanceStatus() {
+        return acceptanceStatus;
+    }
+
+    public void setAcceptanceStatus(AcceptanceStatus acceptanceStatus) {
+        this.acceptanceStatus = acceptanceStatus;
+    }
+
+    public BetStatus getBetStatus() {
+        return betStatus;
+    }
+
+    public void setBetStatus(BetStatus betStatus) {
+        this.betStatus = betStatus;
+    }
+
+    public String getOfferedTime() {
+        return offeredTime;
+    }
+
+    public void setOfferedTime(String offeredTime) {
+        this.offeredTime = offeredTime;
+    }
+
+    public String getAcceptByExpirationDate() {
+        return acceptByExpirationDate;
+    }
+
+    public void setAcceptByExpirationDate(String acceptByExpirationDate) {
+        this.acceptByExpirationDate = acceptByExpirationDate;
+    }
+
+    public boolean isPublicBet() {
+        return publicBet;
+    }
+
+    public void setPublicBet(boolean publicBet) {
+        this.publicBet = publicBet;
+    }
+}
