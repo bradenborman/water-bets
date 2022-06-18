@@ -2,6 +2,8 @@ package waterbets.doa.sql;
 
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import waterbets.models.WaterBet;
+import waterbets.models.enums.AcceptanceStatus;
+import waterbets.models.enums.BetStatus;
 
 import static waterbets.utilities.DateTimeUtility.toStandardStorageFormat;
 
@@ -10,7 +12,6 @@ public class ParamsFactory {
 
     public static MapSqlParameterSource buildInsertNewWaterBet(WaterBet waterBet) {
         //Offered Date Time managed by defaulted timestamp on insert
-
         MapSqlParameterSource params = new MapSqlParameterSource();
         params.addValue("group_id", waterBet.getGroupId());
         params.addValue("offerers_users_id", waterBet.getOfferersUsersId());
@@ -22,6 +23,14 @@ public class ParamsFactory {
         params.addValue("bet_status", waterBet.getBetStatus().name());
         params.addValue("accept_by_expiration_date_time", toStandardStorageFormat(waterBet.getAcceptByExpirationDate()));
 
+        return params;
+    }
+
+    public static MapSqlParameterSource rescindByWaterBetId(int waterBetId) {
+        MapSqlParameterSource params = new MapSqlParameterSource();
+        params.addValue("waterBetId", waterBetId);
+        params.addValue("betStatus", BetStatus.RESCINDED.name());
+        params.addValue("properStatusForRescinding", AcceptanceStatus.NOT_ACKNOWLEDGED.name());
         return params;
     }
 

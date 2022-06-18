@@ -30,12 +30,16 @@ public class WaterBetService {
         logger.info("Creating a new water bet between {} and {}", waterBet.getOfferersUsersId(), waterBet.getReceiversUserId());
 
 
-
         waterBetDao.saveNewWaterBet(waterBet);
     }
 
     public void acknowledgeWaterBet(int waterBetId, boolean accept, int userId) {
         AcceptanceStatus acceptanceStatus = accept ? AcceptanceStatus.ACCEPTED : AcceptanceStatus.DECLINED;
         logger.info("User {} has {} bet {}", userId, acceptanceStatus.name(), waterBetId);
+    }
+
+    public void rescindByWaterBetId(int waterBetId) {
+        logger.info("Rescinding Water bet: {}", waterBetId);
+        waterBetDao.rescindByWaterBetId(waterBetId);
     }
 }

@@ -20,7 +20,7 @@ public class WaterBetController {
     }
 
     @GetMapping("/user/{id}/{waterBetRetrievalStrategy}")
-    public ResponseEntity<List<WaterBet>> betsByUser(@PathVariable int id, @PathVariable WaterBetRetrievalStrategy waterBetRetrievalStrategy) {
+    public ResponseEntity<List<WaterBet>> selectWaterBetsByStrategy(@PathVariable int id, @PathVariable WaterBetRetrievalStrategy waterBetRetrievalStrategy) {
         return ResponseEntity.ok(waterBetService.selectWaterBetsByStrategy(waterBetRetrievalStrategy, id));
     }
 
@@ -30,9 +30,10 @@ public class WaterBetController {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
-    @PostMapping("/rescind/{waterBetId}")
-    public ResponseEntity<Void> rescind(@PathVariable int waterBetId) {
-        //TODO -> logic that would update the DB with rescind Status
+    @DeleteMapping("/{waterBetId}")
+    public ResponseEntity<Void> rescindByWaterBetId(@PathVariable int waterBetId) {
+        //TODO -> validate user owns bid and in right state aka not Accepted already
+        waterBetService.rescindByWaterBetId(waterBetId);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 

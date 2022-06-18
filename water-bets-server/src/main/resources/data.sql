@@ -31,7 +31,24 @@ insert into water_bets (
     receivers_pick,
     decided_winner,
     closed_date_time
-) values (
+) values
+(
+    1,
+    12,
+    1,
+    'Josh will outscore Meyer in fantasy this week',
+    5,
+    5,
+    'ACCEPTED',
+    'CLOSED',
+    '2022-06-10 15:36:38',
+    '2022-06-12 15:36:38',
+    'RECIPIENT',
+    'RECIPIENT',
+    'RECIPIENT',
+    '2022-06-14 13:00:00'
+),
+(
     1,
     1,
     12,

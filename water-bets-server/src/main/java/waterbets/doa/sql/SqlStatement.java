@@ -7,4 +7,6 @@ public class SqlStatement {
             ":bet, :offerers_droplets_on_the_line, :recipient_droplets_on_the_line, :acceptance_status, :bet_status, :accept_by_expiration_date_time)";
 
 
+    public static final String RESCIND_BY_WATER_BET_ID = "UPDATE water_bets set bet_status = :betStatus, closed_date_time = CURRENT_TIMESTAMP " +
+            "WHERE water_bet_id = :waterBetId AND acceptance_status = :properStatusForRescinding";
 }
