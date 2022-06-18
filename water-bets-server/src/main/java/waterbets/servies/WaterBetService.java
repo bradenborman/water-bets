@@ -28,6 +28,9 @@ public class WaterBetService {
 
     public void saveNewWaterBet(WaterBet waterBet) {
         logger.info("Creating a new water bet between {} and {}", waterBet.getOfferersUsersId(), waterBet.getReceiversUserId());
+
+
+
         waterBetDao.saveNewWaterBet(waterBet);
     }
 

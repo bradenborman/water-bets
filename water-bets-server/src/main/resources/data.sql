@@ -8,11 +8,12 @@ create TABLE IF NOT EXISTS water_bets (
   recipient_droplets_on_the_line Int,
   acceptance_status varchar(32),
   bet_status varchar(32),
-  offered_time varchar(32),
-  accept_by_expiration_date varchar(32),
+  offered_date_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  accept_by_expiration_date_time TIMESTAMP,
   offerers_pick varchar(32) NULL,
   receivers_pick varchar(32) NULL,
-  decided_winner varchar(32) NULL
+  decided_winner varchar(32) NULL,
+  closed_date_time TIMESTAMP NULL
 );
 
 insert into water_bets (
@@ -24,11 +25,12 @@ insert into water_bets (
     recipient_droplets_on_the_line,
     acceptance_status,
     bet_status,
-    offered_time,
-    accept_by_expiration_date,
+    offered_date_time,
+    accept_by_expiration_date_time,
     offerers_pick,
     receivers_pick,
-    decided_winner
+    decided_winner,
+    closed_date_time
 ) values (
     1,
     1,
@@ -38,11 +40,12 @@ insert into water_bets (
     50,
     'DECLINED',
     'CLOSED',
-    '2022/05/23 14:55:00:000',
-    '2022/05/23 14:55:00:000',
+    '2022-05-25 15:36:38',
+    '2022-05-28 15:36:38',
     null,
     null,
-    null
+    null,
+    '2022-06-01 13:00:00'
 ),(
     1,
     1,
@@ -52,8 +55,9 @@ insert into water_bets (
     20,
     'NOT_ACKNOWLEDGED',
     'OPEN',
-    '2022/05/25 14:55:00:000',
-    '2022/05/25 14:55:00:000',
+    '2011-05-16 15:36:38',
+    '2011-05-16 15:36:38',
+    null,
     null,
     null,
     null
@@ -66,8 +70,9 @@ insert into water_bets (
     10,
     'ACCEPTED',
     'OPEN',
-    '2022/05/25 14:55:00:000',
-    '2022/05/25 14:55:00:000',
+    '2011-05-16 15:36:38',
+    '2011-05-16 15:36:38',
+    null,
     null,
     null,
     null

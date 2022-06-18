@@ -24,8 +24,8 @@ public class WaterBetRowMapper implements RowMapper<WaterBet> {
         waterBet.setRecipientDropletsOnTheLine(rs.getInt("recipient_droplets_on_the_line"));
         waterBet.setAcceptanceStatus(AcceptanceStatus.findOrNull(rs.getString("acceptance_Status")));
         waterBet.setBetStatus(BetStatus.findOrNull(rs.getString("bet_status")));
-        waterBet.setOfferedTime(rs.getString("offered_time"));
-        waterBet.setAcceptByExpirationDate(rs.getString("accept_by_expiration_date"));
+        waterBet.setOfferedTime(rs.getString("offered_date_time"));
+        waterBet.setAcceptByExpirationDate(rs.getString("accept_by_expiration_date_time"));
         waterBet.setOfferersPick(WaterBetWinner.findOrNull(rs.getString("offerers_pick")));
         waterBet.setReceiversPick(WaterBetWinner.findOrNull(rs.getString("receivers_pick")));
         waterBet.setDecidedWinner(WaterBetWinner.findOrNull(rs.getString("decided_winner")));

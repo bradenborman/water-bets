@@ -6,10 +6,10 @@ import java.time.format.DateTimeFormatterBuilder;
 
 public class DateTimeUtility {
 
-    private static final DateTimeFormatter STORAGE_FORMAT = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss.SSS");
+    private static final DateTimeFormatter STORAGE_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     private static final DateTimeFormatter DATE_TIME_FORMATS = new DateTimeFormatterBuilder()
-            .appendOptional(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss.SSS"))
+            .appendOptional(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"))
             .appendOptional(DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm a"))
             .toFormatter();
 
@@ -20,6 +20,10 @@ public class DateTimeUtility {
 
     public static String toStandardStorageFormat(LocalDateTime dateTime) {
         return dateTime.format(STORAGE_FORMAT);
+    }
+
+    public static String toStandardStorageFormat(String dateTime) {
+        return parseDate(dateTime).format(STORAGE_FORMAT);
     }
 
 }

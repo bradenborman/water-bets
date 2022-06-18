@@ -16,13 +16,19 @@ public class WaterBetDao {
 
     private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
+    //TODO -> move to property
+    private final int DAYS_FOR_CLOSED_BETS_TO_APPEAR = 14;
 
     public WaterBetDao(NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
         this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
     }
 
     public List<WaterBet> selectWaterBetsByStrategy(WaterBetRetrievalStrategy waterBetRetrievalStrategy, int id) {
-        String sql = String.format("SELECT * FROM water_bets WHERE %s = :%s", waterBetRetrievalStrategy.getDbColumn(), waterBetRetrievalStrategy.getDbColumn());
+        String sql = String.format("SELECT * FROM water_bets WHERE %s = :%s AND (bet_status != 'CLOSED' OR closed_date_time > CURRENT_DATE - %d)",
+                waterBetRetrievalStrategy.getDbColumn(),
+                waterBetRetrievalStrategy.getDbColumn(),
+                DAYS_FOR_CLOSED_BETS_TO_APPEAR
+        );
         return namedParameterJdbcTemplate.query(sql, waterBetRetrievalStrategy.paramsByStrategy(id), new WaterBetRowMapper());
     }
 
