@@ -1,0 +1,18 @@
+package waterbets.config.security;
+
+import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
+import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
+import org.springframework.security.oauth2.core.user.OAuth2User;
+import org.springframework.stereotype.Service;
+import waterbets.config.security.models.WaterBetsOAuth2User;
+
+@Service
+public class OAuthUserService extends DefaultOAuth2UserService {
+
+    @Override
+    public OAuth2User loadUser(OAuth2UserRequest userRequest) {
+        OAuth2User user = super.loadUser(userRequest);
+        return new WaterBetsOAuth2User(user);
+    }
+
+}

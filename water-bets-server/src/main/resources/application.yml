@@ -4,7 +4,14 @@ spring:
     username: sa
     password:
     driverClassName: org.h2.Driver
-
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            scope:
+              - email
+              - profile
   h2:
     console:
       enabled: true
