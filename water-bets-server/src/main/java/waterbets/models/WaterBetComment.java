@@ -4,7 +4,7 @@ public class WaterBetComment {
 
     private int commentId;
 
-    private int authorId;
+    private int authorUserId;
     private String author;
     private String comment;
     private String commentTimeStamp;
@@ -21,12 +21,12 @@ public class WaterBetComment {
         return comment;
     }
 
-    public int getAuthorId() {
-        return authorId;
+    public int getAuthorUserId() {
+        return authorUserId;
     }
 
-    public void setAuthorId(int authorId) {
-        this.authorId = authorId;
+    public void setAuthorUserId(int authorUserId) {
+        this.authorUserId = authorUserId;
     }
 
     public String getAuthor() {

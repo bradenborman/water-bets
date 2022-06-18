@@ -4,6 +4,6 @@ pluginManagement {
     }
 }
 
-include "water-bets-server"
+include "water-bets-server", "water-bets-client"
 
 rootProject.name = 'water-bets'

@@ -2,6 +2,7 @@ package waterbets.models;
 
 import waterbets.models.enums.AcceptanceStatus;
 import waterbets.models.enums.BetStatus;
+import waterbets.models.enums.WaterBetWinner;
 import waterbets.utilities.DateTimeUtility;
 
 import java.time.LocalDateTime;
@@ -10,16 +11,31 @@ import java.util.List;
 
 public class WaterBet {
 
+    private int waterBetId;
     private int groupId;
-    private int offeringUsersId;
+    private int offerersUsersId;
     private int receiversUserId;
     private String bet;
-    private int wagerAmount;
+    private int offerersDropletsOnTheLine;
+    private int recipientDropletsOnTheLine;
     private AcceptanceStatus acceptanceStatus;
     private BetStatus betStatus;
     private String offeredTime;
     private String acceptByExpirationDate;
+
+    private WaterBetWinner offerersPick;
+    private WaterBetWinner receiversPick;
+    private WaterBetWinner decidedWinner;
+
     private List<WaterBetComment> comments = new ArrayList<>();
+
+    public int getWaterBetId() {
+        return waterBetId;
+    }
+
+    public void setWaterBetId(int waterBetId) {
+        this.waterBetId = waterBetId;
+    }
 
     public int getGroupId() {
         return groupId;
@@ -29,12 +45,12 @@ public class WaterBet {
         this.groupId = groupId;
     }
 
-    public int getOfferingUsersId() {
-        return offeringUsersId;
+    public int getOfferersUsersId() {
+        return offerersUsersId;
     }
 
-    public void setOfferingUsersId(int offeringUsersId) {
-        this.offeringUsersId = offeringUsersId;
+    public void setOfferersUsersId(int offerersUsersId) {
+        this.offerersUsersId = offerersUsersId;
     }
 
     public int getReceiversUserId() {
@@ -53,12 +69,24 @@ public class WaterBet {
         this.bet = bet;
     }
 
-    public int getWagerAmount() {
-        return wagerAmount;
+    public int getOfferersDropletsOnTheLine() {
+        return offerersDropletsOnTheLine;
     }
 
-    public void setWagerAmount(int wagerAmount) {
-        this.wagerAmount = wagerAmount;
+    public void setOfferersDropletsOnTheLine(int offerersDropletsOnTheLine) {
+        this.offerersDropletsOnTheLine = offerersDropletsOnTheLine;
+    }
+
+    public int getRecipientDropletsOnTheLine() {
+        return recipientDropletsOnTheLine;
+    }
+
+    public int getTotalDropletsOnTheLine() {
+        return recipientDropletsOnTheLine + offerersDropletsOnTheLine;
+    }
+
+    public void setRecipientDropletsOnTheLine(int recipientDropletsOnTheLine) {
+        this.recipientDropletsOnTheLine = recipientDropletsOnTheLine;
     }
 
     public AcceptanceStatus getAcceptanceStatus() {
@@ -93,6 +121,30 @@ public class WaterBet {
         this.acceptByExpirationDate = acceptByExpirationDate;
     }
 
+    public WaterBetWinner getOfferersPick() {
+        return offerersPick;
+    }
+
+    public void setOfferersPick(WaterBetWinner offerersPick) {
+        this.offerersPick = offerersPick;
+    }
+
+    public WaterBetWinner getReceiversPick() {
+        return receiversPick;
+    }
+
+    public void setReceiversPick(WaterBetWinner receiversPick) {
+        this.receiversPick = receiversPick;
+    }
+
+    public WaterBetWinner getDecidedWinner() {
+        return decidedWinner;
+    }
+
+    public void setDecidedWinner(WaterBetWinner decidedWinner) {
+        this.decidedWinner = decidedWinner;
+    }
+
     public List<WaterBetComment> getComments() {
         return comments;
     }
@@ -112,6 +164,7 @@ public class WaterBet {
     public static class WaterBetInitializer {
 
         private final WaterBet waterBet;
+
         public WaterBetInitializer(WaterBet waterBet) {
             this.waterBet = waterBet;
         }
@@ -131,7 +184,7 @@ public class WaterBet {
         }
 
         private void initializeAcceptanceStatusTime() {
-            waterBet.setAcceptanceStatus(AcceptanceStatus.NOT_ACKNOWLEDGE);
+            waterBet.setAcceptanceStatus(AcceptanceStatus.NOT_ACKNOWLEDGED);
         }
 
     }

@@ -18,9 +18,9 @@ public class WaterBetController {
         this.waterBetService = waterBetService;
     }
 
-    @GetMapping("/user/{userId}")
+    @GetMapping("/user/{userId}/offered")
     public ResponseEntity<List<WaterBet>> betsByUser(@PathVariable int userId) {
-        return ResponseEntity.ok(waterBetService.selectWaterBetsByUser(userId));
+        return ResponseEntity.ok(waterBetService.selectWaterBetsOfferedByUser(userId));
     }
 
     @PostMapping("/create")

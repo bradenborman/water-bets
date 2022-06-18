@@ -20,14 +20,14 @@ public class WaterBetService {
         this.waterBetDao = waterBetDao;
     }
 
-    public List<WaterBet> selectWaterBetsByUser(int offeringUsersId) {
+    public List<WaterBet> selectWaterBetsOfferedByUser(int offeringUsersId) {
         logger.info("Getting all water bets for user {}", offeringUsersId);
-        return waterBetDao.getWaterBetsByUser(0);
+        return waterBetDao.getWaterBetsByUser(offeringUsersId);
     }
 
 
     public void createAndSaveNewWaterBet(WaterBet waterBet) {
-        logger.info("Creating a new water bet between {} and {}", waterBet.getOfferingUsersId(), waterBet.getReceiversUserId());
+        logger.info("Creating a new water bet between {} and {}", waterBet.getOfferersUsersId(), waterBet.getReceiversUserId());
 
         waterBet.initializer()
                 .initializeNewWaterBet();

@@ -1,0 +1,112 @@
+#water-bet-viewer {
+  .water-bet-card {
+    background-color: white;
+    padding: 1.5em;
+    margin: 1em;
+    border-radius: 12px;
+    width: 450px;
+    height: 300px;
+    overflow: auto;
+    vertical-align: top; // add this line
+    text-align: left;
+    box-shadow: rgb(138, 138, 138) 2px 2px;
+
+    .card {
+      h2 {
+        font-family: "Raleway", sans-serif;
+        margin: 0px 0px 20px 0px;
+        font-size: 1em;
+      }
+
+      .offerer {
+        opacity: 1;
+      }
+      .bet {
+        font-style: italic;
+        margin: 1.7em;
+        font-size: 1.2em;
+      }
+
+      .money-details {
+        font-size: 1.3em;
+        span.spotlight {
+          font-weight: bold;
+          &.cost {
+            color: rgb(0, 0, 0);
+          }
+          &.payout {
+            color: green;
+          }
+        }
+      }
+
+      .warning-message {
+        color: grey;
+        font-size: 0.7em;
+        margin-top: 1.2em;
+      }
+
+      button {
+        cursor: pointer;
+        margin: 0.4em;
+        opacity: 1;
+      }
+
+      .cash-animation {
+        position: absolute;
+        right: 15px;
+        top: 20px;
+        background-color: rgb(77, 167, 77);
+        padding: 0.4em;
+        color: white;
+        font-family: "Raleway", sans-serif;
+        font-weight: bold;
+        border-radius: 15px;
+        font-size: 1.3em;
+        opacity: 0;
+      }
+
+      &.acknowledged {
+        h2 {
+          font-style: italic;
+        }
+
+        button {
+          opacity: 0;
+          transition: opacity 0.35s;
+        }
+        .offerer {
+          opacity: 0;
+          transition: opacity 0.35s;
+        }
+
+        .warning-message {
+          visibility: hidden;
+        }
+      }
+
+      &.accepted.acknowledged {
+        .cash-animation {
+          opacity: 1;
+          animation: cashPopup 1.7s;
+          animation-fill-mode: forwards;
+          animation-delay: 0.5s;
+        }
+
+        @keyframes cashPopup {
+          0% {
+            top: 20px;
+          }
+
+          85% {
+            opacity: 0.3;
+          }
+          100% {
+            opacity: 0;
+            top: -20px;
+          }
+        }
+      }
+    }
+  }
+}
