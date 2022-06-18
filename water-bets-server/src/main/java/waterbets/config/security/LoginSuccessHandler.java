@@ -25,7 +25,7 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
                                         Authentication authentication) throws IOException {
 
         WaterBetsOAuth2User oauthUser = (WaterBetsOAuth2User) authentication.getPrincipal();
-        userDetailsService.processOAuthPostLogin(oauthUser.getFullName());
+        userDetailsService.processOAuthPostLogin(oauthUser);
         response.sendRedirect("/");
     }
 

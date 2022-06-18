@@ -9,6 +9,7 @@ import java.util.Map;
 public class WaterBetsOAuth2User implements OAuth2User {
 
     private final OAuth2User oauth2User;
+    private int userId;
 
     public WaterBetsOAuth2User(OAuth2User oauth2User) {
         this.oauth2User = oauth2User;
@@ -41,4 +42,12 @@ public class WaterBetsOAuth2User implements OAuth2User {
         return oauth2User.<String>getAttribute("email");
     }
 
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
 }

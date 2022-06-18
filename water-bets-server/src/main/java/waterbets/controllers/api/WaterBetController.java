@@ -1,4 +1,4 @@
-package waterbets.controllers;
+package waterbets.controllers.api;
 
 import org.springframework.http.HttpStatus;
 import waterbets.models.WaterBet;
