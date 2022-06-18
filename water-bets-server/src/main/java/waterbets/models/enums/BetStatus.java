@@ -4,6 +4,7 @@ public enum BetStatus {
 
     OPEN,
     CLOSED,
-    RESCINDED;
+    RESCINDED,
+    ADMIN_VETOED;
 
 }

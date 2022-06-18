@@ -11,6 +11,8 @@ public class Group {
     private int maxDropletBet;
     private List<UserPreview> members;
 
+    private List<WaterBet> waterBets;
+
 
     public int getGroupId() {
         return groupId;
@@ -50,5 +52,13 @@ public class Group {
 
     public void setMembers(List<UserPreview> members) {
         this.members = members;
+    }
+
+    public List<WaterBet> getWaterBets() {
+        return waterBets;
+    }
+
+    public void setWaterBets(List<WaterBet> waterBets) {
+        this.waterBets = waterBets;
     }
 }

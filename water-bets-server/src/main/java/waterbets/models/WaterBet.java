@@ -2,7 +2,9 @@ package waterbets.models;
 
 import waterbets.models.enums.AcceptanceStatus;
 import waterbets.models.enums.BetStatus;
+import waterbets.utilities.DateTimeUtility;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -101,6 +103,37 @@ public class WaterBet {
 
     public void addComment(WaterBetComment comment) {
         comments.add(comment);
+    }
+
+    public WaterBetInitializer initializer() {
+        return new WaterBetInitializer(this);
+    }
+
+    public static class WaterBetInitializer {
+
+        private final WaterBet waterBet;
+        public WaterBetInitializer(WaterBet waterBet) {
+            this.waterBet = waterBet;
+        }
+
+        public void initializeNewWaterBet() {
+            initializeOfferedTime();
+            initializeBetStatus();
+            initializeAcceptanceStatusTime();
+        }
+
+        private void initializeOfferedTime() {
+            waterBet.setOfferedTime(DateTimeUtility.toStandardStorageFormat(LocalDateTime.now()));
+        }
+
+        private void initializeBetStatus() {
+            waterBet.setBetStatus(BetStatus.OPEN);
+        }
+
+        private void initializeAcceptanceStatusTime() {
+            waterBet.setAcceptanceStatus(AcceptanceStatus.NOT_ACKNOWLEDGE);
+        }
+
     }
 
 }

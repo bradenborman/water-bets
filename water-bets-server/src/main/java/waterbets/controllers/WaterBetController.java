@@ -1,5 +1,6 @@
 package waterbets.controllers;
 
+import org.springframework.http.HttpStatus;
 import waterbets.models.WaterBet;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,12 +20,27 @@ public class WaterBetController {
 
     @GetMapping("/user/{userId}")
     public ResponseEntity<List<WaterBet>> betsByUser(@PathVariable int userId) {
-        return ResponseEntity.ok(waterBetService.getWaterBetsByUser(userId));
+        return ResponseEntity.ok(waterBetService.selectWaterBetsByUser(userId));
     }
 
-    @GetMapping("/test")
-    public ResponseEntity<String> test() {
-        return ResponseEntity.ok("Yes");
+    @PostMapping("/create")
+    public ResponseEntity<Void> createWaterBet(@RequestBody WaterBet waterBet) {
+        waterBetService.createAndSaveNewWaterBet(waterBet);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
+
+    @PostMapping("/rescind/{waterBetId}")
+    public ResponseEntity<Void> rescind(@PathVariable int waterBetId) {
+        //TODO -> logic that would update the DB with rescind Status
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
+    @PostMapping("/acknowledge/{waterBetId}")
+    public ResponseEntity<Void> acknowledge(@PathVariable int waterBetId, @RequestParam boolean accept) {
+        //TODO -> logic that would update the DB with AcceptanceStatus
+        waterBetService.acknowledgeWaterBet(waterBetId, accept, 1);
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
 
 }

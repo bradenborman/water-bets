@@ -5,8 +5,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import waterbets.models.Group;
 import waterbets.models.UserPreview;
+import waterbets.models.WaterBet;
 
 import java.util.Arrays;
+import java.util.List;
 
 @Service
 public class GroupService {
@@ -14,12 +16,28 @@ public class GroupService {
     private static final Logger logger = LoggerFactory.getLogger(GroupService.class);
 
 
+    private WaterBetService waterBetService;
+
+    public GroupService(WaterBetService waterBetService) {
+        this.waterBetService = waterBetService;
+    }
+
     public boolean doesPasswordMatch(String password, int groupIdToCheck) {
         return true;
     }
 
     public void addUserToGroup(UserPreview user) {
 
+    }
+
+
+    public Group getLobbyByGroupId(int groupId) {
+        Group group = findGroupByGroupId(groupId);
+        List<WaterBet> bets = waterBetService.selectWaterBetsByGroupId(groupId);
+        group.setWaterBets(bets);
+
+
+        return group;
     }
 
     public Group findGroupByGroupId(int groupId) {

@@ -63,12 +63,13 @@ public class WaterBetDao {
     }
 
 
-    public void createNewWaterBet(WaterBet waterBet) {
+    public void createAndSaveNewWaterBet(WaterBet waterBet) {
 //        MapSqlParameterSource params = new MapSqlParameterSource();
+        System.out.println("Created new waterbet");
     }
 
 
-    public List<WaterBet> getWaterBetsByLobbyId(int lobbyId) {
+    public List<WaterBet> selectWaterBetsByGroupId(int lobbyId) {
         //placehodler for data
         return getWaterBetsByUser(0);
     }

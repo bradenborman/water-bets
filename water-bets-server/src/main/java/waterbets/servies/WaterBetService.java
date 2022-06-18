@@ -5,6 +5,7 @@ import waterbets.models.WaterBet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import waterbets.models.enums.AcceptanceStatus;
 
 import java.util.List;
 
@@ -19,19 +20,28 @@ public class WaterBetService {
         this.waterBetDao = waterBetDao;
     }
 
-    public List<WaterBet> getWaterBetsByUser(int offeringUsersId) {
+    public List<WaterBet> selectWaterBetsByUser(int offeringUsersId) {
         logger.info("Getting all water bets for user {}", offeringUsersId);
         return waterBetDao.getWaterBetsByUser(0);
     }
 
 
-    public void createNewWaterBet(WaterBet waterBet) {
+    public void createAndSaveNewWaterBet(WaterBet waterBet) {
         logger.info("Creating a new water bet between {} and {}", waterBet.getOfferingUsersId(), waterBet.getReceiversUserId());
-        waterBetDao.createNewWaterBet(waterBet);
+
+        waterBet.initializer()
+                .initializeNewWaterBet();
+
+        waterBetDao.createAndSaveNewWaterBet(waterBet);
     }
 
-    public List<WaterBet> getWaterBetsByGroupId(int lobbyId) {
+    public List<WaterBet> selectWaterBetsByGroupId(int lobbyId) {
         logger.info("Getting all water bets for lobby {}", lobbyId);
-        return waterBetDao.getWaterBetsByLobbyId(lobbyId);
+        return waterBetDao.selectWaterBetsByGroupId(lobbyId);
+    }
+
+    public void acknowledgeWaterBet(int waterBetId, boolean accept, int userId) {
+        AcceptanceStatus acceptanceStatus = accept ? AcceptanceStatus.ACCEPTED : AcceptanceStatus.DECLINED;
+        logger.info("User {} has {} bet {}", userId, acceptanceStatus.name(), waterBetId);
     }
 }

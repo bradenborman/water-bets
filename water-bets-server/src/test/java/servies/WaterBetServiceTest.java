@@ -40,7 +40,7 @@ class WaterBetServiceTest {
         waterBet.setAcceptByExpirationDate(DateTimeUtility.toStandardStorageFormat(LocalDateTime.now().plusHours(8)));
 
         Assertions.assertDoesNotThrow(() -> {
-            waterBetService.createNewWaterBet(waterBet);
+            waterBetService.createAndSaveNewWaterBet(waterBet);
         });
 
     }
