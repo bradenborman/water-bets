@@ -19,14 +19,14 @@ public class WaterBetController {
         this.waterBetService = waterBetService;
     }
 
-    @GetMapping("/user/{userId}/{waterBetRetrievalStrategy}")
-    public ResponseEntity<List<WaterBet>> betsByUser(@PathVariable int userId, @PathVariable WaterBetRetrievalStrategy waterBetRetrievalStrategy) {
-        return ResponseEntity.ok(waterBetService.selectWaterBetsByStrategy(waterBetRetrievalStrategy, userId));
+    @GetMapping("/user/{id}/{waterBetRetrievalStrategy}")
+    public ResponseEntity<List<WaterBet>> betsByUser(@PathVariable int id, @PathVariable WaterBetRetrievalStrategy waterBetRetrievalStrategy) {
+        return ResponseEntity.ok(waterBetService.selectWaterBetsByStrategy(waterBetRetrievalStrategy, id));
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Void> createWaterBet(@RequestBody WaterBet waterBet) {
-        waterBetService.createAndSaveNewWaterBet(waterBet);
+    public ResponseEntity<Void> createAndSaveNewWaterBet(@RequestBody WaterBet waterBet) {
+        waterBetService.saveNewWaterBet(waterBet.initializer().initializeNewWaterBet());
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 

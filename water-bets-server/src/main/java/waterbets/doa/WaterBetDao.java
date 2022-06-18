@@ -2,6 +2,8 @@ package waterbets.doa;
 
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import waterbets.doa.rowmappers.WaterBetRowMapper;
+import waterbets.doa.sql.ParamsFactory;
+import waterbets.doa.sql.SqlStatement;
 import waterbets.models.WaterBet;
 
 import org.springframework.stereotype.Repository;
@@ -14,6 +16,7 @@ public class WaterBetDao {
 
     private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
+
     public WaterBetDao(NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
         this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
     }
@@ -23,7 +26,8 @@ public class WaterBetDao {
         return namedParameterJdbcTemplate.query(sql, waterBetRetrievalStrategy.paramsByStrategy(id), new WaterBetRowMapper());
     }
 
-    public void createAndSaveNewWaterBet(WaterBet waterBet) {
+    public void saveNewWaterBet(WaterBet waterBet) {
+        namedParameterJdbcTemplate.update(SqlStatement.INSERT_NEW_WATER_BET, ParamsFactory.buildInsertNewWaterBet(waterBet));
     }
 
 }

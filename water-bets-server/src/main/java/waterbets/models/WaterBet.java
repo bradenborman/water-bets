@@ -169,10 +169,11 @@ public class WaterBet {
             this.waterBet = waterBet;
         }
 
-        public void initializeNewWaterBet() {
+        public WaterBet initializeNewWaterBet() {
             initializeOfferedTime();
             initializeBetStatus();
             initializeAcceptanceStatusTime();
+            return waterBet;
         }
 
         private void initializeOfferedTime() {

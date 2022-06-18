@@ -22,17 +22,13 @@ public class WaterBetService {
     }
 
     //Hands group, offerer, and receiver
-    public List<WaterBet> selectWaterBetsByStrategy(WaterBetRetrievalStrategy waterBetRetrievalStrategy, int offeringUsersId) {
-        return waterBetDao.selectWaterBetsByStrategy(waterBetRetrievalStrategy, offeringUsersId);
+    public List<WaterBet> selectWaterBetsByStrategy(WaterBetRetrievalStrategy waterBetRetrievalStrategy, int id) {
+        return waterBetDao.selectWaterBetsByStrategy(waterBetRetrievalStrategy, id);
     }
 
-    public void createAndSaveNewWaterBet(WaterBet waterBet) {
+    public void saveNewWaterBet(WaterBet waterBet) {
         logger.info("Creating a new water bet between {} and {}", waterBet.getOfferersUsersId(), waterBet.getReceiversUserId());
-
-        waterBet.initializer()
-                .initializeNewWaterBet();
-
-        waterBetDao.createAndSaveNewWaterBet(waterBet);
+        waterBetDao.saveNewWaterBet(waterBet);
     }
 
     public void acknowledgeWaterBet(int waterBetId, boolean accept, int userId) {
