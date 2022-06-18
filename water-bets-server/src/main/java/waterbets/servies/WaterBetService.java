@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import waterbets.models.enums.AcceptanceStatus;
+import waterbets.models.enums.WaterBetRetrievalStrategy;
 
 import java.util.List;
 
@@ -20,11 +21,10 @@ public class WaterBetService {
         this.waterBetDao = waterBetDao;
     }
 
-    public List<WaterBet> selectWaterBetsOfferedByUser(int offeringUsersId) {
-        logger.info("Getting all water bets for user {}", offeringUsersId);
-        return waterBetDao.getWaterBetsByUser(offeringUsersId);
+    //Hands group, offerer, and receiver
+    public List<WaterBet> selectWaterBetsByStrategy(WaterBetRetrievalStrategy waterBetRetrievalStrategy, int offeringUsersId) {
+        return waterBetDao.selectWaterBetsByStrategy(waterBetRetrievalStrategy, offeringUsersId);
     }
-
 
     public void createAndSaveNewWaterBet(WaterBet waterBet) {
         logger.info("Creating a new water bet between {} and {}", waterBet.getOfferersUsersId(), waterBet.getReceiversUserId());
@@ -33,11 +33,6 @@ public class WaterBetService {
                 .initializeNewWaterBet();
 
         waterBetDao.createAndSaveNewWaterBet(waterBet);
-    }
-
-    public List<WaterBet> selectWaterBetsByGroupId(int lobbyId) {
-        logger.info("Getting all water bets for lobby {}", lobbyId);
-        return waterBetDao.selectWaterBetsByGroupId(lobbyId);
     }
 
     public void acknowledgeWaterBet(int waterBetId, boolean accept, int userId) {

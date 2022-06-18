@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import waterbets.models.Group;
 import waterbets.models.UserPreview;
 import waterbets.models.WaterBet;
+import waterbets.models.enums.WaterBetRetrievalStrategy;
 
 import java.util.Arrays;
 import java.util.List;
@@ -33,7 +34,7 @@ public class GroupService {
 
     public Group getLobbyByGroupId(int groupId) {
         Group group = findGroupByGroupId(groupId);
-        List<WaterBet> bets = waterBetService.selectWaterBetsByGroupId(groupId);
+        List<WaterBet> bets = waterBetService.selectWaterBetsByStrategy(WaterBetRetrievalStrategy.USER_OFFERED, 1);
         group.setWaterBets(bets);
 
 

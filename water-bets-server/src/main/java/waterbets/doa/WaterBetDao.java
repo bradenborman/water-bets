@@ -1,11 +1,11 @@
 package waterbets.doa;
 
-import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import waterbets.doa.rowmappers.WaterBetRowMapper;
 import waterbets.models.WaterBet;
 
 import org.springframework.stereotype.Repository;
+import waterbets.models.enums.WaterBetRetrievalStrategy;
 
 import java.util.List;
 
@@ -18,20 +18,12 @@ public class WaterBetDao {
         this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
     }
 
-    public List<WaterBet> getWaterBetsByUser(int offeringUsersId) {
-        MapSqlParameterSource params = new MapSqlParameterSource();
-        params.addValue("offeringUsersId", offeringUsersId);
-        String sql = "SELECT * FROM water_bets WHERE offerers_users_id = :offeringUsersId";
-        return namedParameterJdbcTemplate.query(sql, params, new WaterBetRowMapper());
+    public List<WaterBet> selectWaterBetsByStrategy(WaterBetRetrievalStrategy waterBetRetrievalStrategy, int id) {
+        String sql = String.format("SELECT * FROM water_bets WHERE %s = :%s", waterBetRetrievalStrategy.getDbColumn(), waterBetRetrievalStrategy.getDbColumn());
+        return namedParameterJdbcTemplate.query(sql, waterBetRetrievalStrategy.paramsByStrategy(id), new WaterBetRowMapper());
     }
-
 
     public void createAndSaveNewWaterBet(WaterBet waterBet) {
-    }
-
-
-    public List<WaterBet> selectWaterBetsByGroupId(int lobbyId) {
-        return getWaterBetsByUser(0);
     }
 
 }

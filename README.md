@@ -1,1 +1,1 @@
-# water-bets- http://localhost:8080/api/water-bets/user/1/offered- http://localhost:8080/api/water-bets/user/2/offered- http://localhost:8080/api/group/1- http://localhost:8080/h2-console
+# water-bets- http://localhost:8080/api/water-bets/user/1/USER_OFFERED- http://localhost:8080/api/water-bets/user/2/USER_OFFERED- http://localhost:8080/api/water-bets/user/1/OFFERED_TO_USER- http://localhost:8080/api/water-bets/user/1/OFFERS_WITH_GROUP- http://localhost:8080/api/group/1- http://localhost:8080/h2-console

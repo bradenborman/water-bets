@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus;
 import waterbets.models.WaterBet;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import waterbets.models.enums.WaterBetRetrievalStrategy;
 import waterbets.servies.WaterBetService;
 
 import java.util.List;
@@ -18,9 +19,9 @@ public class WaterBetController {
         this.waterBetService = waterBetService;
     }
 
-    @GetMapping("/user/{userId}/offered")
-    public ResponseEntity<List<WaterBet>> betsByUser(@PathVariable int userId) {
-        return ResponseEntity.ok(waterBetService.selectWaterBetsOfferedByUser(userId));
+    @GetMapping("/user/{userId}/{waterBetRetrievalStrategy}")
+    public ResponseEntity<List<WaterBet>> betsByUser(@PathVariable int userId, @PathVariable WaterBetRetrievalStrategy waterBetRetrievalStrategy) {
+        return ResponseEntity.ok(waterBetService.selectWaterBetsByStrategy(waterBetRetrievalStrategy, userId));
     }
 
     @PostMapping("/create")
