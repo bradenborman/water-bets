@@ -28,7 +28,7 @@ public class WaterBetsUserDetailsService {
         logger.info("{} is attempting to login", oAuth2User.getFullName());
 
         int playerId = queryForUserByEmail(oAuth2User)
-                .orElse(insertFirstTimePlayer(oAuth2User));
+                .orElseGet(() -> insertFirstTimePlayer(oAuth2User));
 
         oAuth2User.setUserId(playerId);
     }

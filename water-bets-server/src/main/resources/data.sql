@@ -4,7 +4,6 @@ create TABLE IF NOT EXISTS water_bets_users (
   user_full_name varchar(132) NOT NULL
 );
 
-
 create TABLE IF NOT EXISTS water_bets (
   water_bet_id bigint auto_increment,
   group_id Int,
@@ -21,6 +20,32 @@ create TABLE IF NOT EXISTS water_bets (
   receivers_pick varchar(32) NULL,
   decided_winner varchar(32) NULL,
   closed_date_time TIMESTAMP NULL
+);
+
+create TABLE IF NOT EXISTS groups (
+  group_id bigint auto_increment,
+  group_name varchar(64) NOT NULL,
+  password_to_join varchar(32) NULL,
+  max_droplet_bet int
+);
+
+
+insert into water_bets_users (
+    user_email,
+    user_full_name
+) values
+(
+    'bradenborman00@gmail.com',
+    'Braden Borman'
+);
+
+insert into groups (
+    group_name,
+    password_to_join
+) values
+(
+    'Not Arizona State',
+    'ross'
 );
 
 insert into water_bets (

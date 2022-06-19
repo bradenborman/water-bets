@@ -4,7 +4,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import waterbets.config.security.SecurityContextService;
+import waterbets.doa.GroupDao;
 import waterbets.models.Group;
+import waterbets.models.GroupsPreview;
 import waterbets.models.UserPreview;
 import waterbets.models.WaterBet;
 import waterbets.models.enums.WaterBetRetrievalStrategy;
@@ -17,11 +19,13 @@ public class GroupService {
 
     private static final Logger logger = LoggerFactory.getLogger(GroupService.class);
 
+    private final WaterBetService waterBetService;
+    private final GroupDao groupDao;
 
-    private WaterBetService waterBetService;
 
-    public GroupService(WaterBetService waterBetService) {
+    public GroupService(WaterBetService waterBetService, GroupDao groupDao) {
         this.waterBetService = waterBetService;
+        this.groupDao = groupDao;
     }
 
     public boolean doesPasswordMatch(String password, int groupIdToCheck) {
@@ -33,7 +37,7 @@ public class GroupService {
     }
 
 
-    public Group getLobbyByGroupId(int groupId) {
+    public Group fullGroupDetails(int groupId) {
         Group group = findGroupByGroupId(groupId);
 
         int userId = SecurityContextService.accessLoggedInUser().getUserId();
@@ -93,4 +97,15 @@ public class GroupService {
         return testGroup;
     }
 
+    public GroupsPreview fillGroupPreview() {
+        int userId = SecurityContextService.accessLoggedInUser().getUserId();
+
+        GroupsPreview groupsPreview = new GroupsPreview();
+        List<GroupsPreview.GroupPreview> groupsUserBelongs = groupDao.selectGroupPreviews(userId, true);
+        List<GroupsPreview.GroupPreview> groupsUserNotMember = groupDao.selectGroupPreviews(userId, false);
+
+        groupsPreview.setGroupsUserMember(groupsUserBelongs);
+        groupsPreview.setGroupsUserAbsentOf(groupsUserNotMember);
+        return groupsPreview;
+    }
 }

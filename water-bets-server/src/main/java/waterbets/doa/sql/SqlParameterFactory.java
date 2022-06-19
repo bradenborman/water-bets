@@ -39,4 +39,9 @@ public class SqlParameterFactory {
         return params;
     }
 
+    public static MapSqlParameterSource buildGroupPreviewsWithUser(int userId) {
+        MapSqlParameterSource params = new MapSqlParameterSource();
+        params.addValue("userId", userId);
+        return params;
+    }
 }
