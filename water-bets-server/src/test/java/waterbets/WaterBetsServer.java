@@ -1,10 +1,11 @@
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import waterbets.WaterBetsApplication;
+package waterbets;
 
-public class Server extends WaterBetsApplication {
+import org.springframework.boot.builder.SpringApplicationBuilder;
+
+public class WaterBetsServer extends WaterBetsApplication {
 
     public static void main(String[] args) {
-        new Server().configure(new SpringApplicationBuilder())
+        new WaterBetsServer().configure(new SpringApplicationBuilder())
                 .initializers()
                 .profiles("local", "protected")
                 .run(args);

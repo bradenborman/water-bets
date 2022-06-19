@@ -31,6 +31,30 @@ tasks.named('test') {
 	useJUnitPlatform()
 }
 
+task copyClient(dependsOn: ":water-bets-client:clientBuild") {
+
+	doFirst {
+		delete "src/main/resources/static"
+		delete "src/main/resources/templates"
+	}
+
+	doLast {
+		copy {
+			from new File(project(":water-bets-client").getProjectDir(), "build")
+			into "src/main/resources/static"
+		}
+		copy {
+			from new File(project(":water-bets-client").getProjectDir(), "build/index.html")
+			into "src/main/resources/templates"
+		}
+	}
+}
+
+
+processResources.dependsOn(copyClient)
+clean.dependsOn(":water-bets-client:clientClean")
+
+
 //Needed for heroku
 task stage(dependsOn: ['build', 'clean'])
 build.mustRunAfter clean

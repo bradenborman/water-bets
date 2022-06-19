@@ -8,6 +8,8 @@ build/
 credentials
 water-bets-server/src/main/resources/application-protected.yml
 
+
+
 ### STS ###
 .apt_generated
 .classpath
