@@ -47,12 +47,13 @@ const config = {
     new CopyWebpackPlugin([
       { from: "src/img", to: "img" },
       //   { from: "src/error.html", to: "" },
-      { from: "src/lib/fonts", to: "fonts" },
-      { from: "src/lib/webfonts", to: "webfonts" },
-      {
-        from: "src/lib/font-awesome-v5.10.2.min.css",
-        to: "lib/font-awesome-v5.10.2.min.css"
-      }
+      { from: "src/login.html", to: "" }
+      // { from: "src/lib/fonts", to: "fonts" },
+      // { from: "src/lib/webfonts", to: "webfonts" },
+      // {
+      //   from: "src/lib/font-awesome-v5.10.2.min.css",
+      //   to: "lib/font-awesome-v5.10.2.min.css"
+      // }
     ])
   ]
 };
