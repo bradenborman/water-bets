@@ -7,7 +7,8 @@ build/
 
 credentials
 water-bets-server/src/main/resources/application-protected.yml
-
+#water-bets-server/src/main/resources/static/
+#water-bets-server/src/main/resources/templates/
 
 
 ### STS ###
