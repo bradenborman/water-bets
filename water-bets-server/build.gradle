@@ -62,3 +62,12 @@ clean.dependsOn(":water-bets-client:clientClean")
 //Needed for heroku
 task stage(dependsOn: ['build', 'clean'])
 build.mustRunAfter clean
+
+jar {
+	//needed for heroku with a .jar
+	manifest {
+		attributes(
+				'Main-Class': 'waterbets.WaterBetsApplication'
+		)
+	}
+}
