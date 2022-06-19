@@ -2,7 +2,7 @@ package waterbets.doa;
 
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import waterbets.doa.rowmappers.WaterBetRowMapper;
-import waterbets.doa.sql.ParamsFactory;
+import waterbets.doa.sql.SqlParameterFactory;
 import waterbets.doa.sql.SqlStatement;
 import waterbets.exceptions.FailureToRescindWaterBetException;
 import waterbets.models.WaterBet;
@@ -37,11 +37,11 @@ public class WaterBetDao {
     }
 
     public void saveNewWaterBet(WaterBet waterBet) {
-        namedParameterJdbcTemplate.update(SqlStatement.INSERT_NEW_WATER_BET, ParamsFactory.buildInsertNewWaterBet(waterBet));
+        namedParameterJdbcTemplate.update(SqlStatement.INSERT_NEW_WATER_BET, SqlParameterFactory.buildInsertNewWaterBet(waterBet));
     }
 
     public void rescindByWaterBetId(int waterBetId) {
-        int rowsEffectedCount = namedParameterJdbcTemplate.update(SqlStatement.RESCIND_BY_WATER_BET_ID, ParamsFactory.rescindByWaterBetId(waterBetId));
+        int rowsEffectedCount = namedParameterJdbcTemplate.update(SqlStatement.RESCIND_BY_WATER_BET_ID, SqlParameterFactory.rescindByWaterBetId(waterBetId));
         if (rowsEffectedCount == 0)
             throw new FailureToRescindWaterBetException("Failed to rescind any rows for water bet " + waterBetId);
     }

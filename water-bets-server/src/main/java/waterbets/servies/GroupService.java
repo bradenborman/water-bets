@@ -3,6 +3,7 @@ package waterbets.servies;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import waterbets.config.security.SecurityContextService;
 import waterbets.models.Group;
 import waterbets.models.UserPreview;
 import waterbets.models.WaterBet;
@@ -34,7 +35,10 @@ public class GroupService {
 
     public Group getLobbyByGroupId(int groupId) {
         Group group = findGroupByGroupId(groupId);
-        List<WaterBet> bets = waterBetService.selectWaterBetsByStrategy(WaterBetRetrievalStrategy.USER_OFFERED, 1);
+
+        int userId = SecurityContextService.accessLoggedInUser().getUserId();
+
+        List<WaterBet> bets = waterBetService.selectWaterBetsByStrategy(WaterBetRetrievalStrategy.USER_OFFERED, userId);
         group.setWaterBets(bets);
 
 

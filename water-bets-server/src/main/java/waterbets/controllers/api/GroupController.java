@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import waterbets.config.security.SecurityContextService;
 import waterbets.models.Group;
 import waterbets.servies.GroupService;
 
@@ -22,7 +21,6 @@ public class GroupController {
 
     @GetMapping("/{groupId}")
     public ResponseEntity<Group> betsByUser(@PathVariable int groupId) {
-        System.out.println(SecurityContextService.accessLoggedInUser().getEmail());
         return ResponseEntity.ok(groupService.getLobbyByGroupId(groupId));
     }
 

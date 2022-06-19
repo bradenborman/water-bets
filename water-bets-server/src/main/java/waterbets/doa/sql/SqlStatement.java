@@ -8,5 +8,6 @@ public class SqlStatement {
 
 
     public static final String RESCIND_BY_WATER_BET_ID = "UPDATE water_bets set bet_status = :betStatus, closed_date_time = CURRENT_TIMESTAMP " +
-            "WHERE water_bet_id = :waterBetId AND acceptance_status = :properStatusForRescinding";
+            "WHERE water_bet_id = :waterBetId AND acceptance_status = :properStatusForRescinding AND offerers_users_id = :userId";
+
 }

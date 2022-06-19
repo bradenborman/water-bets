@@ -1,3 +1,10 @@
+create TABLE IF NOT EXISTS water_bets_users (
+  user_id bigint auto_increment,
+  user_email varchar(255) NOT NULL,
+  user_full_name varchar(132) NOT NULL
+);
+
+
 create TABLE IF NOT EXISTS water_bets (
   water_bet_id bigint auto_increment,
   group_id Int,
