@@ -4,12 +4,12 @@ import Navbar from "react-bootstrap/Navbar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGlassWaterDroplet } from "@fortawesome/free-solid-svg-icons";
 
-export interface WaterBetsNavbarProps {
+export interface LoggedInNavbarProps {
   userSignedIn?: string;
 }
 
-export const WaterBetsNavbar: React.FC<WaterBetsNavbarProps> = (
-  props: WaterBetsNavbarProps
+export const LoggedInNavbar: React.FC<LoggedInNavbarProps> = (
+  props: LoggedInNavbarProps
 ) => {
   const signedInText = (): JSX.Element => {
     if (props.userSignedIn == undefined || props.userSignedIn == null) {
@@ -21,7 +21,7 @@ export const WaterBetsNavbar: React.FC<WaterBetsNavbarProps> = (
   return (
     <Navbar id="navbar">
       <Container>
-        <Navbar.Brand href="#home">
+        <Navbar.Brand href="/">
           <FontAwesomeIcon
             className="fa-water-icon"
             icon={faGlassWaterDroplet}

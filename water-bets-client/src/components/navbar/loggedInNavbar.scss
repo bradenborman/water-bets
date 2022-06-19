@@ -1,0 +1,9 @@
+#navbar {
+  background-color: $THEME_COLOR;
+  border-top: 3px solid $BLUE;
+  border-bottom: 3px solid $BLUE;
+
+  svg.fa-water-icon {
+    color: $BLUE;
+  }
+}
