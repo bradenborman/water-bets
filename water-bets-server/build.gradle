@@ -2,6 +2,15 @@ plugins {
 	id 'org.springframework.boot' version "2.6.6"
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
+	id 'war'
+}
+
+springBoot {
+	mainClass = 'waterbets.WaterBetsApplication'
+}
+
+war {
+	enabled = false
 }
 
 group = 'borman'
@@ -62,12 +71,3 @@ clean.dependsOn(":water-bets-client:clientClean")
 //Needed for heroku
 task stage(dependsOn: ['build', 'clean'])
 build.mustRunAfter clean
-
-jar {
-	//needed for heroku with a .jar
-	manifest {
-		attributes(
-				'Main-Class': 'waterbets.WaterBetsApplication'
-		)
-	}
-}
