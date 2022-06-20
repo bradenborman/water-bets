@@ -1,8 +1,5 @@
 import React from "react";
-import {
-  BrowserRouter as ReactRouter,
-  Route as ReactRoute
-} from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -17,9 +14,15 @@ import { LoggedInNavbar } from "../navbar/loggedInNavbar";
 export interface LoginProps {}
 
 export const Login: React.FC<LoginProps> = (props: LoginProps) => {
+  const history = useHistory();
+
+  const handleGoogleSignIn = (e: any): void => {
+    window.location.replace("/oauth2/authorization/google");
+  };
+
   return (
     <>
-      <Container fluid="md">
+      <Container fluid="md" id="login">
         <br />
         <br />
         <Row>
@@ -51,6 +54,16 @@ export const Login: React.FC<LoginProps> = (props: LoginProps) => {
                 </Card.Text>
               </Card.Body>
             </Card>
+          </Col>
+        </Row>
+        <Row className="login-form-row">
+          <Col>
+            <Button
+              className="login-with-google-btn"
+              onClick={handleGoogleSignIn}
+            >
+              Sign in with Google
+            </Button>
           </Col>
         </Row>
       </Container>
