@@ -13,10 +13,9 @@ export interface AppProps {}
 export const App: React.FC<AppProps> = (props: AppProps) => {
   return (
     <ReactRouter>
-      <ReactRoute path={"/"} exact>
-        <>test</>
+      <ReactRoute path={"/"}>
+        <ReactRoute path={"login"} component={Login} />
       </ReactRoute>
-      <ReactRoute path={"/login"} component={Login} />
     </ReactRouter>
   );
 };

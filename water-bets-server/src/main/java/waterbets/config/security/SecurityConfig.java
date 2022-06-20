@@ -2,6 +2,7 @@ package waterbets.config.security;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
@@ -25,6 +26,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests()
                 .antMatchers("/oauth/**").permitAll()
+                .antMatchers("/*.js", "/*.css", "/img/*").permitAll()
                 .antMatchers("/h2-console/*", "/h2-console/**", "/console/**").permitAll() //Remove line when H2-Database is removed
                 .anyRequest().authenticated()
                 .and()
