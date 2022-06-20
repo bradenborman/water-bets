@@ -1,4 +1,7 @@
 #navbar {
+  .navbar-brand {
+    font-size: 1.5em;
+  }
   background-color: $THEME_COLOR;
   border-top: 3px solid $BLUE;
   border-bottom: 3px solid $BLUE;

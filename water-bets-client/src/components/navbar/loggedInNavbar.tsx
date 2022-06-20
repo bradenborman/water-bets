@@ -3,6 +3,7 @@ import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGlassWaterDroplet } from "@fortawesome/free-solid-svg-icons";
+import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 
 export interface LoggedInNavbarProps {
   userSignedIn?: string;
@@ -15,7 +16,13 @@ export const LoggedInNavbar: React.FC<LoggedInNavbarProps> = (
     if (props.userSignedIn == undefined || props.userSignedIn == null) {
       return <Navbar.Text>Not logged in</Navbar.Text>;
     }
-    return <Navbar.Text>Signed in as: {props.userSignedIn}</Navbar.Text>;
+    return (
+      <Navbar.Text>
+        {" "}
+        <FontAwesomeIcon className="fa-user-alt" icon={faUserCircle} />{" "}
+        {props.userSignedIn}
+      </Navbar.Text>
+    );
   };
 
   return (

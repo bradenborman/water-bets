@@ -9,8 +9,6 @@ import Card from "react-bootstrap/Card";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHelmetSafety } from "@fortawesome/free-solid-svg-icons";
 
-import { LoggedInNavbar } from "../navbar/loggedInNavbar";
-
 export interface LoginProps {}
 
 export const Login: React.FC<LoginProps> = (props: LoginProps) => {
