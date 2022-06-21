@@ -26,6 +26,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests()
                 .antMatchers("/oauth/**").permitAll()
+                .antMatchers("/how-to-play").permitAll()
                 .antMatchers("/*.js", "/*.css", "/img/*").permitAll()
                 .antMatchers("/h2-console/*", "/h2-console/**", "/console/**").permitAll() //Remove line when H2-Database is removed
                 .anyRequest().authenticated()

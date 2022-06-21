@@ -11,7 +11,9 @@ public class ViewController {
     @RequestMapping({
             "",
             "/",
-            "/login"
+            "/login",
+            "/home",
+            "/how-to-play"
     })
     public String view() {
         return "index";

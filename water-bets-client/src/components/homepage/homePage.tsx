@@ -10,7 +10,7 @@ export const HomePage: React.FC<LandingPageProps> = (
   props: LandingPageProps
 ) => {
   return (
-    <Page id="landing-page">
+    <Page id="home-page" topPadding={false}>
       <Nav className="justify-content-end" activeKey="/home">
         <Nav.Item>
           <Nav.Link href="/how-to-play" eventKey="htp">
