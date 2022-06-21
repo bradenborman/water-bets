@@ -12,7 +12,7 @@ export interface PageProps {
 export const Page: React.FC<PageProps> = (props: PageProps) => {
   return (
     <>
-      <LoggedInNavbar />
+      <LoggedInNavbar userSignedIn="Placeholder User" />
       <Container
         className={classNames("page", { "top-padding": props.topPadding })}
         id={props.id}
