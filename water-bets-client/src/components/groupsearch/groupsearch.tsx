@@ -13,6 +13,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import Loader from "react-loader-spinner";
+import { CreateGroupModal } from "./createGroupModal";
 
 export interface GroupSearchProps {}
 
@@ -21,6 +22,9 @@ export const GroupSearch: React.FC<GroupSearchProps> = (
 ) => {
   const [groupNameToSearch, setGroupNameToSearch] = useState<string>("");
   const [groupResultsFound, setGoupResultsFound] = useState<any>();
+
+  //Create Group Modal
+  const [show, setShow] = useState<boolean>(false);
 
   const handleGroupSearch = (e: any) => {
     e.preventDefault();
@@ -81,7 +85,9 @@ export const GroupSearch: React.FC<GroupSearchProps> = (
           <tr key={index}>
             <td width={"50%"}>{_row.groupName}</td>
             <td>{_row.membersCount}</td>
-            <td>{_row.passwordProtected ? "Password Required" : ""}</td>
+            <td className="text-warn">
+              {_row.passwordProtected ? "Password Required" : ""}
+            </td>
             <td className="joinGroupTd">
               <Button
                 variant="link"
@@ -112,13 +118,22 @@ export const GroupSearch: React.FC<GroupSearchProps> = (
 
     if (groupResultsFound != undefined && groupResultsFound != null)
       return buildTable();
-    else if (true) return groupSearchLoading();
+    else if (false) return groupSearchLoading();
     else return preSearchHelp();
   };
 
   return (
     <Page id="group-search-page" topPadding={true}>
-      <Row>
+      <Row id="createGroupRow">
+        <Col md="12">
+          Don't see your group?
+          <Button variant="success" size="sm" onClick={e => setShow(!show)}>
+            Create
+          </Button>
+          {<CreateGroupModal show={show} setShow={setShow}></CreateGroupModal>}
+        </Col>
+      </Row>
+      <Row id="groupSearchRow">
         <Col md="6">
           <Form onSubmit={handleGroupSearch}>
             <InputGroup>

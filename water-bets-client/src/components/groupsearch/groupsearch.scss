@@ -1,4 +1,14 @@
 #group-search-page {
+  #createGroupRow {
+    text-align: right;
+    button {
+      margin-left: 8px;
+    }
+  }
+
+  #groupSearchRow {
+    margin-top: 30px;
+  }
   #preSearchHelp {
     margin-top: 30px;
   }
