@@ -57,39 +57,32 @@ public class GroupService {
 
         UserPreview brendan = new UserPreview();
         brendan.setUserId(1);
-        brendan.setFirstName("Brendan");
-        brendan.setLastName("Borman");
+        brendan.setUserFullName("Brendan Borman");
         brendan.setTotalPoolValue(100);
 
         UserPreview erik = new UserPreview();
         erik.setUserId(12);
-        erik.setFirstName("Erik");
-        erik.setLastName("Meyer");
+        erik.setUserFullName("Erik Meyer");
         erik.setTotalPoolValue(100);
 
         UserPreview zane = new UserPreview();
         zane.setUserId(2);
-        zane.setFirstName("Zane");
-        zane.setLastName("Lavy");
+        zane.setUserFullName("Zane Lavy");
         zane.setTotalPoolValue(100);
 
         UserPreview josh = new UserPreview();
         josh.setUserId(22);
-        josh.setFirstName("Josh");
-        josh.setLastName("Hughes");
+        josh.setUserFullName("Josh Hughes");
         josh.setTotalPoolValue(100);
 
         UserPreview sean = new UserPreview();
         sean.setUserId(32);
-        sean.setFirstName("Sean");
-        sean.setLastName("Noble");
+        sean.setUserFullName("Sean Noble");
         sean.setTotalPoolValue(100);
-
 
         UserPreview tedd = new UserPreview();
         tedd.setUserId(42);
-        tedd.setFirstName("Tedd");
-        tedd.setLastName("Mudd");
+        tedd.setUserFullName("Tedd Mudd");
         tedd.setTotalPoolValue(100);
 
         testGroup.setMembers(Arrays.asList(brendan, erik, zane, josh, sean, tedd));
