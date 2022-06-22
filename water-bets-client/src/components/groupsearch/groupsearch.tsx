@@ -12,6 +12,7 @@ import {
 } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import Loader from "react-loader-spinner";
 
 export interface GroupSearchProps {}
 
@@ -37,6 +38,18 @@ export const GroupSearch: React.FC<GroupSearchProps> = (
         groupName: "Geek Squad University",
         passwordProtected: false,
         membersCount: 8
+      },
+      {
+        groupId: 3,
+        groupName: "G-Unit",
+        passwordProtected: false,
+        membersCount: 5
+      },
+      {
+        groupId: 4,
+        groupName: "Taco tacks",
+        passwordProtected: true,
+        membersCount: 4
       }
     ]);
   };
@@ -45,11 +58,27 @@ export const GroupSearch: React.FC<GroupSearchProps> = (
     alert("Attempting to join: " + e.groupName);
   };
 
-  const buildTable = (): JSX.Element => {
-    if (groupResultsFound != undefined && groupResultsFound != null) {
+  const searchResults = (): JSX.Element => {
+    const preSearchHelp = (): JSX.Element => {
+      return (
+        <div id="preSearchHelp">
+          Please use the input above to search for an existing group
+        </div>
+      );
+    };
+
+    const groupSearchLoading = (): JSX.Element => {
+      return (
+        <div id="groupSearchLoading">
+          <Loader type="ThreeDots" color="#00BFFF" height={80} width={80} />
+        </div>
+      );
+    };
+
+    const buildTable = (): JSX.Element => {
       const tableRows = groupResultsFound.map((_row: any, index: any) => {
         return (
-          <tr>
+          <tr key={index}>
             <td width={"50%"}>{_row.groupName}</td>
             <td>{_row.membersCount}</td>
             <td>{_row.passwordProtected ? "Password Required" : ""}</td>
@@ -79,7 +108,12 @@ export const GroupSearch: React.FC<GroupSearchProps> = (
           <tbody>{tableRows}</tbody>
         </Table>
       );
-    }
+    };
+
+    if (groupResultsFound != undefined && groupResultsFound != null)
+      return buildTable();
+    else if (true) return groupSearchLoading();
+    else return preSearchHelp();
   };
 
   return (
@@ -109,7 +143,7 @@ export const GroupSearch: React.FC<GroupSearchProps> = (
         </Col>
       </Row>
       <Row>
-        <Col>{buildTable()}</Col>
+        <Col>{searchResults()}</Col>
       </Row>
     </Page>
   );

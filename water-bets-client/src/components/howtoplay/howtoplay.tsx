@@ -8,7 +8,7 @@ var data: HowToPlayItem[] = require("./how-to-play-items.json");
 export const HowToPlay: React.FC<any> = (props: {}) => {
   const howToPlayAccordionItems: JSX.Element[] = data.map((item, index) => {
     return (
-      <Accordion.Item eventKey={index.toString()}>
+      <Accordion.Item key={index} eventKey={index.toString()}>
         <Accordion.Header>{item.title}</Accordion.Header>
         <Accordion.Body>{item.value}</Accordion.Body>
       </Accordion.Item>
