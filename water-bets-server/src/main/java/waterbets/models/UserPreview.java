@@ -3,8 +3,7 @@ package waterbets.models;
 public class UserPreview {
 
     private int userId;
-    private String firstName;
-    private String lastName;
+    private String userFullName;
     private int totalPoolValue;
 
 
@@ -16,20 +15,12 @@ public class UserPreview {
         this.userId = userId;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getUserFullName() {
+        return userFullName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setUserFullName(String userFullName) {
+        this.userFullName = userFullName;
     }
 
     public int getTotalPoolValue() {

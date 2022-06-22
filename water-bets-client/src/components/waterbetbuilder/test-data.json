@@ -1,0 +1,56 @@
+[
+  {
+    "groupId": 1,
+    "groupName": "Not Arizona State",
+    "maxDropletBet": 100,
+    "members": [
+      {
+        "userId": 1,
+        "userFullName": "Erik Meyer"
+      },
+      {
+        "userId": 2,
+        "userFullName": "Zane Lavy"
+      },
+      {
+        "userId": 3,
+        "userFullName": "Brendan Borman"
+      },
+      {
+        "userId": 4,
+        "userFullName": "Sean Noble"
+      },
+      {
+        "userId": 5,
+        "userFullName": "Josh Hughes"
+      }
+    ]
+  },
+  {
+    "groupId": 2,
+    "groupName": "Kentucky Fried Chicks",
+    "maxDropletBet": 50,
+    "members": [
+      {
+        "userId": 1,
+        "userFullName": "Sally Ride"
+      },
+      {
+        "userId": 2,
+        "userFullName": "Elane Johnson"
+      },
+      {
+        "userId": 3,
+        "userFullName": "Sam Berry"
+      },
+      {
+        "userId": 4,
+        "userFullName": "Sophie Price"
+      },
+      {
+        "userId": 5,
+        "userFullName": "Allie Wilder"
+      }
+    ]
+  }
+]
