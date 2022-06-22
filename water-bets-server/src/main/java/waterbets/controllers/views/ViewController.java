@@ -13,7 +13,8 @@ public class ViewController {
             "/",
             "/login",
             "/home",
-            "/how-to-play"
+            "/how-to-play",
+            "/group-search"
     })
     public String view() {
         return "index";

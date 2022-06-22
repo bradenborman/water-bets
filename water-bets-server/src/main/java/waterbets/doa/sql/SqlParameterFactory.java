@@ -44,4 +44,11 @@ public class SqlParameterFactory {
         params.addValue("userId", userId);
         return params;
     }
+
+    public static MapSqlParameterSource buildSelectAllUsersByGroup(int groupId) {
+        MapSqlParameterSource params = new MapSqlParameterSource();
+        params.addValue("groupId", groupId);
+        return params;
+    }
+
 }

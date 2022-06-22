@@ -1,4 +1,4 @@
 export default interface HowToPlayItem {
-  title: String;
-  value: String;
+  title: string;
+  value: string;
 }

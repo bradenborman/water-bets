@@ -1,7 +1,14 @@
-create TABLE IF NOT EXISTS water_bets_users (
+create TABLE IF NOT EXISTS users (
   user_id bigint auto_increment,
   user_email varchar(255) NOT NULL,
   user_full_name varchar(132) NOT NULL
+);
+
+create TABLE IF NOT EXISTS buckets (
+  bucket_id bigint auto_increment,
+  group_id Int NOT NULL,
+  user_id Int NOT NULL,
+  droplets Int NOT NULL
 );
 
 create TABLE IF NOT EXISTS water_bets (
@@ -30,13 +37,22 @@ create TABLE IF NOT EXISTS groups (
 );
 
 
-insert into water_bets_users (
+insert into users (
     user_email,
     user_full_name
 ) values
 (
     'bradenborman00@gmail.com',
     'Braden Borman'
+);
+
+insert into users (
+    user_email,
+    user_full_name
+) values
+(
+    'tborman20@gmail.com',
+    'Tim Borman'
 );
 
 insert into groups (
@@ -46,6 +62,22 @@ insert into groups (
 (
     'Not Arizona State',
     'ross'
+);
+
+insert into buckets (
+ group_id,
+ user_id,
+ droplets
+) values
+(
+    1,
+    1,
+    100
+),
+(
+    1,
+    2,
+    100
 );
 
 insert into water_bets (

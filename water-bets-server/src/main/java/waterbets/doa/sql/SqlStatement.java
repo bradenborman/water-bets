@@ -19,4 +19,10 @@ public class SqlStatement {
 
     //select from many to one where id matches
     public static final String SELECT_GROUP_PREVIEWS_BY_USER_ID = "";
+
+
+    public static final String SELECT_ALL_USERS_BY_GROUP = "SELECT * FROM users " +
+            "LEFT JOIN buckets on users.USER_ID = buckets.USER_ID " +
+            "WHERE group_id = :groupId";
+
 }

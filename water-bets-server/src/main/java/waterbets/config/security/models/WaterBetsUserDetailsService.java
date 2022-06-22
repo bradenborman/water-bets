@@ -38,7 +38,7 @@ public class WaterBetsUserDetailsService {
         MapSqlParameterSource params = new MapSqlParameterSource();
         params.addValue("email", oAuth2User.getEmail());
 
-        String selectUserByEmail = "SELECT user_id FROM water_bets_users WHERE user_email = :email";
+        String selectUserByEmail = "SELECT user_id FROM users WHERE user_email = :email";
         try {
             return Optional.ofNullable(namedParameterJdbcTemplate.queryForObject(selectUserByEmail, params, Integer.class));
         } catch (EmptyResultDataAccessException emptyResultDataAccessException) {
@@ -55,7 +55,7 @@ public class WaterBetsUserDetailsService {
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
 
-        String insertNewUser = "INSERT INTO water_bets_users (user_email, user_full_name) VALUES (:email, :fullName)";
+        String insertNewUser = "INSERT INTO users (user_email, user_full_name) VALUES (:email, :fullName)";
 
         namedParameterJdbcTemplate.update(insertNewUser, params, keyHolder);
 
