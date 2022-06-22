@@ -39,6 +39,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .userService(oauthUserService)
                 .and()
                 .successHandler(loginSuccessHandler);
+
+        http.rememberMe()
+                .alwaysRemember(true)
+                .key("1063")
+                .rememberMeCookieName("remember-me-auto-login")
+                .tokenValiditySeconds(10000000);
+
     }
 
 }

@@ -3,7 +3,6 @@ import { Page } from "../page/page";
 import {
   Col,
   Row,
-  FloatingLabel,
   Form,
   InputGroup,
   FormControl,
@@ -35,25 +34,29 @@ export const GroupSearch: React.FC<GroupSearchProps> = (
         groupId: 1,
         groupName: "Not Arizona State",
         passwordProtected: true,
-        membersCount: 6
+        membersCount: 6,
+        joined: false
       },
       {
         groupId: 2,
         groupName: "Geek Squad University",
         passwordProtected: false,
-        membersCount: 8
+        membersCount: 8,
+        joined: false
       },
       {
         groupId: 3,
         groupName: "G-Unit",
         passwordProtected: false,
-        membersCount: 5
+        membersCount: 5,
+        joined: true
       },
       {
         groupId: 4,
         groupName: "Taco tacks",
         passwordProtected: true,
-        membersCount: 4
+        membersCount: 4,
+        joined: false
       }
     ]);
   };
@@ -81,6 +84,19 @@ export const GroupSearch: React.FC<GroupSearchProps> = (
 
     const buildTable = (): JSX.Element => {
       const tableRows = groupResultsFound.map((_row: any, index: any) => {
+        const joinedLinkTd = _row.joined ? (
+          <>Joined</>
+        ) : (
+          <Button
+            variant="link"
+            onClick={e => {
+              handleJoinGroup(_row);
+            }}
+          >
+            Join Group
+          </Button>
+        );
+
         return (
           <tr key={index}>
             <td width={"50%"}>{_row.groupName}</td>
@@ -88,16 +104,7 @@ export const GroupSearch: React.FC<GroupSearchProps> = (
             <td className="text-warn">
               {_row.passwordProtected ? "Password Required" : ""}
             </td>
-            <td className="joinGroupTd">
-              <Button
-                variant="link"
-                onClick={e => {
-                  handleJoinGroup(_row);
-                }}
-              >
-                Join Group
-              </Button>
-            </td>
+            <td className="joinGroupTd">{joinedLinkTd}</td>
           </tr>
         );
       });

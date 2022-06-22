@@ -12,19 +12,19 @@ export const HomePage: React.FC<LandingPageProps> = (
   return (
     <Page id="home-page" topPadding={false}>
       <Nav className="justify-content-end" activeKey="/home">
-        <Nav.Item>
+        {/* <Nav.Item>
           <Nav.Link href="/how-to-play" eventKey="htp">
             How to Play
+          </Nav.Link>
+        </Nav.Item> */}
+        <Nav.Item>
+          <Nav.Link href="/create-water-bet" eventKey="htp">
+            Create Water Bet
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
           <Nav.Link href="/group-search" eventKey="gs">
             Group Search
-          </Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link href="/user/logout" eventKey="logout">
-            Logout
           </Nav.Link>
         </Nav.Item>
       </Nav>

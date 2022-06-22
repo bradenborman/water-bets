@@ -8,6 +8,7 @@ import { Login } from "../login/login";
 import { HomePage } from "../homepage/homePage";
 import { HowToPlay } from "../howtoplay/howtoplay";
 import { GroupSearch } from "../groupsearch/groupsearch";
+import { WaterBetBuilder } from "../waterbetbuilder/waterBetBuilder";
 
 require("./app.scss");
 
@@ -20,6 +21,7 @@ export const App: React.FC<AppProps> = (props: AppProps) => {
       <ReactRoute exact path={["/", "/home"]} component={HomePage} />
       <ReactRoute exact path="/how-to-play" component={HowToPlay} />
       <ReactRoute exact path="/group-search" component={GroupSearch} />
+      <ReactRoute exact path="/create-water-bet" component={WaterBetBuilder} />
     </ReactRouter>
   );
 };
