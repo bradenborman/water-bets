@@ -1,4 +1,14 @@
 #water-bet-builder {
+  font-size: 1.3em;
+
+  .fa-droplet {
+    color: blue;
+  }
+
+  .wager-input {
+    max-width: 120px;
+  }
+
   .submitCol {
     text-align: right;
     #submitBtn {

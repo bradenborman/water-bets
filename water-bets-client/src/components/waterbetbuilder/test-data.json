@@ -6,23 +6,28 @@
     "members": [
       {
         "userId": 1,
-        "userFullName": "Erik Meyer"
+        "userFullName": "Erik Meyer",
+        "totalPoolValue": 1000
       },
       {
         "userId": 2,
-        "userFullName": "Zane Lavy"
+        "userFullName": "Zane Lavy",
+        "totalPoolValue": 1000
       },
       {
         "userId": 3,
-        "userFullName": "Brendan Borman"
+        "userFullName": "Brendan Borman",
+        "totalPoolValue": 1000
       },
       {
         "userId": 4,
-        "userFullName": "Sean Noble"
+        "userFullName": "Sean Noble",
+        "totalPoolValue": 1000
       },
       {
         "userId": 5,
-        "userFullName": "Josh Hughes"
+        "userFullName": "Josh Hughes",
+        "totalPoolValue": 1000
       }
     ]
   },
@@ -33,23 +38,28 @@
     "members": [
       {
         "userId": 1,
-        "userFullName": "Sally Ride"
+        "userFullName": "Sally Ride",
+        "totalPoolValue": 1000
       },
       {
         "userId": 2,
-        "userFullName": "Elane Johnson"
+        "userFullName": "Elane Johnson",
+        "totalPoolValue": 1000
       },
       {
         "userId": 3,
-        "userFullName": "Sam Berry"
+        "userFullName": "Sam Berry",
+        "totalPoolValue": 1000
       },
       {
         "userId": 4,
-        "userFullName": "Sophie Price"
+        "userFullName": "Sophie Price",
+        "totalPoolValue": 1000
       },
       {
         "userId": 5,
-        "userFullName": "Allie Wilder"
+        "userFullName": "Allie Wilder",
+        "totalPoolValue": 1000
       }
     ]
   }
