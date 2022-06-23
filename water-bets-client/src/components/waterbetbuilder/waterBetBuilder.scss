@@ -1,18 +1,32 @@
 #water-bet-builder {
-  font-size: 1.3em;
+  .create-bet-card {
+    background-color: white;
+    padding: 2.5em;
+    background-image: url("https://www.freeiconspng.com/thumbs/water-drop-png/free-download-water-drops-png-images-19.png");
+    border-radius: 15px;
+    box-shadow: $BABY_BLUE 4px 4px;
 
-  .fa-droplet {
-    color: blue;
-  }
+    form {
+      border: 1px solid rgb(116, 116, 116);
+      padding: 1em;
+      border-radius: 15px;
+      background-color: $CREAM_WHITE;
+      font-size: 1.3em;
 
-  .wager-input {
-    max-width: 120px;
-  }
+      .fa-droplet {
+        color: blue;
+      }
 
-  .submitCol {
-    text-align: right;
-    #submitBtn {
-      margin-top: 30px;
+      .wager-input {
+        max-width: 120px;
+      }
+
+      .submitCol {
+        text-align: right;
+        #submitBtn {
+          margin: 30px;
+        }
+      }
     }
   }
 }

@@ -14,7 +14,7 @@ export const LoggedInNavbar: React.FC<LoggedInNavbarProps> = (
 ) => {
   const signedInText = (): JSX.Element => {
     if (props.userSignedIn == undefined || props.userSignedIn == null) {
-      return <Navbar.Text>Login In?</Navbar.Text>;
+      return <Navbar.Text>...</Navbar.Text>;
     }
     return (
       <Navbar.Text>

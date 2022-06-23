@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { LoggedInNavbar } from "../navbar/loggedInNavbar";
 import Container from "react-bootstrap/Container";
 import classNames from "classnames/bind";
@@ -10,9 +10,15 @@ export interface PageProps {
 }
 
 export const Page: React.FC<PageProps> = (props: PageProps) => {
+  const [userFullName, setUserFullName] = useState<string>();
+
+  useEffect(() => {
+    setUserFullName("Logged in user");
+  }, []);
+
   return (
     <>
-      <LoggedInNavbar userSignedIn="Placeholder User" />
+      <LoggedInNavbar userSignedIn={userFullName} />
       <Container
         className={classNames("page", { "top-padding": props.topPadding })}
         id={props.id}

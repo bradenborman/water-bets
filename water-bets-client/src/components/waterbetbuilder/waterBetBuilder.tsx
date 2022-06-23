@@ -7,7 +7,8 @@ import {
   Form,
   Row,
   Col,
-  Button
+  Button,
+  Card
 } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -15,8 +16,12 @@ import {
   faDroplet
 } from "@fortawesome/free-solid-svg-icons";
 import Group from "../../models/group";
-import UserPreview from "../../models/userPreview";
 import isValidWagerInput from "../../utilities/validWagerEntryUtility";
+import {
+  threeHoursFromNow,
+  rightNow,
+  weekFromNow
+} from "../../utilities/dataTimeUtility";
 
 var data: Group[] = require("./test-data.json");
 
@@ -45,6 +50,7 @@ export const WaterBetBuilder: React.FC<WaterBetBuilderProps> = (
 
   const [offerersWagerAmount, setOfferersWagerAmount] = useState<string>("0");
   const [receiversWagerAmount, setReceiversWagerAmount] = useState<string>("0");
+  const [offerExpires, setOfferExpires] = useState<string>(threeHoursFromNow());
 
   const buildPrefixDropDownItems = (): JSX.Element => {
     const items = prefixes.map((text, index) => (
@@ -59,7 +65,7 @@ export const WaterBetBuilder: React.FC<WaterBetBuilderProps> = (
     ));
     return (
       <DropdownButton
-        variant="outline-secondary"
+        variant="secondary"
         title="Prefixes"
         id="prefixes-dropdown-1"
       >
@@ -110,7 +116,7 @@ export const WaterBetBuilder: React.FC<WaterBetBuilderProps> = (
         return groupMatch.members.map((member, index) => {
           return (
             <option key={index} value={member.userId.toString()}>
-              {member.userFullName}
+              {`${member.userFullName} \(${member.totalPoolValue})`}
             </option>
           );
         });
@@ -140,7 +146,7 @@ export const WaterBetBuilder: React.FC<WaterBetBuilderProps> = (
   };
 
   const handleRecieversWagerChange = (e: any): void => {
-    if (e.target.length == null) setReceiversWagerAmount("");
+    if (e.target.value.length == 0) setReceiversWagerAmount("");
 
     //Null safe due to disabled on input
     const groupMatch: Group = groupData.find(
@@ -165,86 +171,95 @@ export const WaterBetBuilder: React.FC<WaterBetBuilderProps> = (
 
   return (
     <Page id="water-bet-builder" topPadding={true}>
-      <Form onSubmit={handleSubmit}>
-        <Row className="mt-3">
-          <Col>
-            <InputGroup>
-              {buildPrefixDropDownItems()}
-              <InputGroup.Text id="basic-addon2">
-                {activePrefix}
-              </InputGroup.Text>
+      <Card className="create-bet-card">
+        <Form onSubmit={handleSubmit}>
+          <Row className="mt-3">
+            <Col>
+              <InputGroup>
+                {buildPrefixDropDownItems()}
+                <InputGroup.Text id="basic-addon2">
+                  {activePrefix}
+                </InputGroup.Text>
+                <Form.Control
+                  // as="textarea"
+                  aria-label="user-defined-water-bet"
+                  required
+                  type="text"
+                  value={userDefinedWaterBet}
+                  onChange={e => setUserDefinedWaterBet(e.target.value)}
+                />
+              </InputGroup>
+            </Col>
+          </Row>
+          <Row className="mt-3">
+            <Col md={4}>
+              Group
+              {buildGroupSelect()}
+            </Col>
+            <Col md={4}>
+              Offer Water Bet to
+              {buildUserSelect()}
+            </Col>
+            <Col md={3}>
+              Set offer to Expire:{" "}
               <Form.Control
-                // as="textarea"
-                aria-label="user-defined-water-bet"
                 required
-                type="text"
-                value={userDefinedWaterBet}
-                onChange={e => setUserDefinedWaterBet(e.target.value)}
-              />
-            </InputGroup>
-          </Col>
-        </Row>
-        <Row className="mt-3">
-          <Col md={4}>
-            Group
-            {buildGroupSelect()}
-          </Col>
-          <Col md={4}>
-            Offer Water Bet to
-            {buildUserSelect()}
-          </Col>
-          <Col md={2}>
-            Set offer to Expire:{" "}
-            <Form.Control
-              type="datetime-local"
-              id="expirationDatetime"
-              onChange={e => {}}
-            ></Form.Control>
-          </Col>
-        </Row>
-        <Row className="mt-3">
-          <Col md={4}>
-            <Form.Label>Droplets I want to wager</Form.Label>
-            <InputGroup>
-              <InputGroup.Text id="my-wager">
-                <FontAwesomeIcon className="fa-droplet" icon={faDroplet} />
-              </InputGroup.Text>
-              <Form.Control
-                className="wager-input"
-                type="text"
-                value={offerersWagerAmount}
-                onChange={handleOfferersWagerChange}
-                aria-label="Droplets I want to wager"
-                aria-describedby="my-wager"
-              />
-            </InputGroup>
-          </Col>
-          <Col md={4}>
-            <Form.Label>Droplets I would win</Form.Label>
-            <InputGroup>
-              <InputGroup.Text id="their-wager">
-                <FontAwesomeIcon className="fa-droplet" icon={faDroplet} />
-              </InputGroup.Text>
-              <Form.Control
-                className="wager-input"
-                type="text"
-                disabled={!(Number.parseInt(selectedUserId) > 0)}
-                value={receiversWagerAmount}
-                onChange={handleRecieversWagerChange}
-                aria-label="Droplets I would win"
-                aria-describedby="their-wager"
-              />
-            </InputGroup>
-          </Col>
-        </Row>
-        <Row>
-          <Col className="submitCol">
-            <Button id="submitBtn" type="submit">
-              Send Offer
-            </Button>
-          </Col>
-        </Row>
-      </Form>
+                type="datetime-local"
+                id="expirationDatetime"
+                min={rightNow()}
+                max={weekFromNow()}
+                step={60000}
+                value={offerExpires}
+                onChange={e => {
+                  setOfferExpires(e.target.value);
+                }}
+              ></Form.Control>
+            </Col>
+          </Row>
+          <Row className="mt-3">
+            <Col md={4}>
+              <Form.Label>Droplets I want to wager</Form.Label>
+              <InputGroup>
+                <InputGroup.Text id="my-wager">
+                  <FontAwesomeIcon className="fa-droplet" icon={faDroplet} />
+                </InputGroup.Text>
+                <Form.Control
+                  className="wager-input"
+                  type="text"
+                  value={offerersWagerAmount}
+                  onChange={handleOfferersWagerChange}
+                  aria-label="Droplets I want to wager"
+                  aria-describedby="my-wager"
+                />
+              </InputGroup>
+            </Col>
+            <Col md={4}>
+              <Form.Label>Droplets I would win</Form.Label>
+              <InputGroup>
+                <InputGroup.Text id="their-wager">
+                  <FontAwesomeIcon className="fa-droplet" icon={faDroplet} />
+                </InputGroup.Text>
+                <Form.Control
+                  className="wager-input"
+                  type="text"
+                  disabled={!(Number.parseInt(selectedUserId) > 0)}
+                  value={receiversWagerAmount}
+                  onChange={handleRecieversWagerChange}
+                  aria-label="Droplets I would win"
+                  aria-describedby="their-wager"
+                />
+              </InputGroup>
+            </Col>
+          </Row>
+          <Row>
+            <Col className="submitCol">
+              <Button id="submitBtn" type="submit">
+                Send Offer
+              </Button>
+            </Col>
+          </Row>
+        </Form>
+      </Card>
     </Page>
   );
 };
