@@ -55,7 +55,7 @@ export const LoggedInNavbar: React.FC<LoggedInNavbarProps> = (
           <Nav.Item>
             <Nav.Link href="/leaderboard">Leaderboards</Nav.Link>
           </Nav.Item>
-          <NavDropdown title="Dropdown" id="nav-dropdown">
+          <NavDropdown title="More" id="nav-dropdown">
             <NavDropdown.Item href="/how-to-play">How to Play</NavDropdown.Item>
             <NavDropdown.Item href="/group-search">
               Group Search
