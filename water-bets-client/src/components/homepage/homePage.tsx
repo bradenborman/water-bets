@@ -1,6 +1,16 @@
 import React from "react";
 import { Page } from "../page/page";
-import { Row, Col, Tabs, Tab, Table, Badge } from "react-bootstrap";
+import {
+  Row,
+  Col,
+  Tabs,
+  Tab,
+  Table,
+  Badge,
+  DropdownButton,
+  ButtonGroup,
+  Dropdown
+} from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMailForward, faMailBulk } from "@fortawesome/free-solid-svg-icons";
 import { OffersReceived } from "./offerTable/offersReceived";
@@ -44,18 +54,32 @@ export const HomePage: React.FC<LandingPageProps> = (
               <Table striped bordered hover>
                 <thead>
                   <tr>
-                    <th>#</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Username</th>
+                    <th>To</th>
+                    <th>Water Bet</th>
+                    <th>My Cost</th>
+                    <th>To Win</th>
+                    <th>Expires</th>
+                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td>1</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
+                    <td>Brendan Borman</td>
+                    <td>Gabe Davis will be a pro bowler in 2022/23</td>
+                    <td>5</td>
+                    <td>5</td>
+                    <td>21 Days</td>
+                    <td>
+                      <DropdownButton
+                        as={ButtonGroup}
+                        variant="link"
+                        title="Reply"
+                        id="bg-vertical-dropdown-1"
+                      >
+                        <Dropdown.Item eventKey="1">Accept Offer</Dropdown.Item>
+                        <Dropdown.Item eventKey="2">Deline Offer</Dropdown.Item>
+                      </DropdownButton>
+                    </td>
                   </tr>
                 </tbody>
               </Table>

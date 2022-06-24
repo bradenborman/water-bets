@@ -33,7 +33,8 @@ export const OffersReceived: React.FC<OffersReceivedProps> = (
               <tr>
                 <td>Brendan Borman</td>
                 <td>
-                  I believe that Nico Collins will only have 15tds this year
+                  I believe that Nico Collins will have no more than 4 tds this
+                  year
                 </td>
                 <td>20</td>
                 <td>10</td>
@@ -51,7 +52,7 @@ export const OffersReceived: React.FC<OffersReceivedProps> = (
                 </td>
               </tr>
               <tr>
-                <td>Erik Meyer</td>
+                <td>Curtis Dingdong</td>
                 <td>
                   I believe that Watson will play at least 8 games this season
                 </td>
@@ -90,8 +91,8 @@ export const OffersReceived: React.FC<OffersReceivedProps> = (
             </thead>
             <tbody>
               <tr>
-                <td>Brent Theonen</td>
-                <td>I believe that there will be a hotfix this next release</td>
+                <td>Allen Peterson</td>
+                <td>I believe I get 10+ shiny this next week</td>
                 <td>10</td>
                 <td>10</td>
                 <td>3 Days</td>
