@@ -116,7 +116,9 @@ export const WaterBetBuilder: React.FC<WaterBetBuilderProps> = (
         return groupMatch.members.map((member, index) => {
           return (
             <option key={index} value={member.userId.toString()}>
-              {`${member.userFullName} \(${member.totalPoolValue})`}
+              {`${
+                member.userFullName
+              } \(${member.totalPoolValue.toLocaleString()})`}
             </option>
           );
         });

@@ -45,7 +45,7 @@ export const LoggedInNavbar: React.FC<LoggedInNavbarProps> = (
         </Container>
       </Navbar>
       <Container>
-        <Nav justify variant="tabs">
+        <Nav className="mini-nav" justify variant="tabs">
           <Nav.Item>
             <Nav.Link href="/home">Open Bets</Nav.Link>
           </Nav.Item>

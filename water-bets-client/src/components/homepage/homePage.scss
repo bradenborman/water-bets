@@ -1,12 +1,38 @@
 #home-page {
   font-size: 1.3em;
+  margin-top: 4em;
 
-  .nav {
-    margin-bottom: 2em;
+  .number-badge {
+    color: rgb(0, 0, 0);
+    background-color: $THEME_COLOR;
+    font-weight: bold;
+    padding: 3px 10px;
+    border-radius: 10px;
+    border: 1px solid black;
+    // margin-left: 10px;
+    // margin-right: 20px;
   }
 
-  span.attention-needed {
-    color: red;
-    font-style: italic;
+  .nav-tabs {
+    border-bottom: 3px solid $THEME_COLOR;
+    .nav-item {
+      .nav-link {
+        padding: 10px 30px;
+      }
+    }
+  }
+
+  .tab {
+    padding: 0px 20px;
+  }
+
+  .tab-content {
+    .offer-group {
+      background-color: white;
+      border-radius: 15px;
+      padding: 1.5em;
+      border: 1px solid $THEME_COLOR;
+      box-shadow: rgb(31, 31, 31) 2px 2px;
+    }
   }
 }

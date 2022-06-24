@@ -1,15 +1,9 @@
 import React from "react";
 import { Page } from "../page/page";
-import {
-  Nav,
-  Badge,
-  Row,
-  Col,
-  ListGroup,
-  Tabs,
-  Tab,
-  Table
-} from "react-bootstrap";
+import { Row, Col, Tabs, Tab, Table, Badge } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMailForward, faMailBulk } from "@fortawesome/free-solid-svg-icons";
+import { OffersReceived } from "./offerTable/offersReceived";
 
 export interface LandingPageProps {
   userSignedIn?: string;
@@ -24,42 +18,29 @@ export const HomePage: React.FC<LandingPageProps> = (
         <Col md={12}>
           <Tabs
             defaultActiveKey="myOffers"
-            transition={false}
+            transition={true}
             id="noanim-tab-example"
-            className="mb-3"
           >
-            <Tab eventKey="myOffers" title="Offered to Me">
-              <Table striped bordered hover>
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Username</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                  </tr>
-                  <tr>
-                    <td>3</td>
-                    <td colSpan={2}>Larry the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
-                </tbody>
-              </Table>
+            <Tab
+              eventKey="myOffers"
+              title={
+                <>
+                  <FontAwesomeIcon icon={faMailBulk} /> Offers Received{" "}
+                  <span className="number-badge">1</span>
+                </>
+              }
+            >
+              {<OffersReceived />}
             </Tab>
-            <Tab eventKey="mineSent" title="Offers I sent">
+            <Tab
+              eventKey="mineSent"
+              title={
+                <>
+                  <FontAwesomeIcon icon={faMailForward} /> Offers I sent{" "}
+                  <span className="number-badge">3</span>
+                </>
+              }
+            >
               <Table striped bordered hover>
                 <thead>
                   <tr>
@@ -79,12 +60,7 @@ export const HomePage: React.FC<LandingPageProps> = (
                 </tbody>
               </Table>
             </Tab>
-            <Tab eventKey="helpSettle" title="Help Settle">
-              <h3>
-                Please review the water bets below as they two parties involved
-                disagreed on the winner.
-              </h3>
-            </Tab>
+            <Tab eventKey="helpSettle" title={<>Help Settle</>}></Tab>
           </Tabs>
         </Col>
       </Row>

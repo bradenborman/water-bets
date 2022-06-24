@@ -1,7 +1,8 @@
 #navbar {
   .navbar-brand {
-    font-size: 1.5em;
+    font-size: 1.3em;
   }
+
   background-color: $THEME_COLOR;
   border-top: 3px solid $BLUE;
   border-bottom: 3px solid $BLUE;
@@ -9,4 +10,12 @@
   svg.fa-water-icon {
     color: $BLUE;
   }
+}
+
+.mini-nav {
+  border-bottom: 3px solid $BLUE;
+  border-right: 3px solid $BLUE;
+  border-left: 3px solid $BLUE;
+  box-shadow: $THEME_COLOR 2px 3px;
+  font-weight: bold;
 }

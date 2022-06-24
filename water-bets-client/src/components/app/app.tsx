@@ -9,6 +9,7 @@ import { HomePage } from "../homepage/homePage";
 import { HowToPlay } from "../howtoplay/howtoplay";
 import { GroupSearch } from "../groupsearch/groupsearch";
 import { WaterBetBuilder } from "../waterbetbuilder/waterBetBuilder";
+import { LeaderBoard } from "../leaderboard/leaderBoard";
 
 require("./app.scss");
 
@@ -22,6 +23,7 @@ export const App: React.FC<AppProps> = (props: AppProps) => {
       <ReactRoute exact path="/how-to-play" component={HowToPlay} />
       <ReactRoute exact path="/group-search" component={GroupSearch} />
       <ReactRoute exact path="/create-water-bet" component={WaterBetBuilder} />
+      <ReactRoute exact path="/leaderboard" component={LeaderBoard} />
     </ReactRouter>
   );
 };

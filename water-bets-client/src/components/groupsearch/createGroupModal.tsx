@@ -40,7 +40,7 @@ export const CreateGroupModal: React.FC<CreateGroupModalProps> = (
         <Modal.Body>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
             <Form.Label>Group Name</Form.Label>
-            <Form.Control type="text" placeholder="groupname" autoFocus />
+            <Form.Control type="text" placeholder="" autoFocus />
           </Form.Group>
           <Row>
             <Col md="6">
