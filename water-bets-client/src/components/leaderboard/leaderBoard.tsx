@@ -6,5 +6,9 @@ export interface LeaderBoardProps {}
 export const LeaderBoard: React.FC<LeaderBoardProps> = (
   props: LeaderBoardProps
 ) => {
-  return <Page id="leaderboard-page" topPadding={true}></Page>;
+  return (
+    <Page id="leaderboard-page" topPadding={true}>
+      <h2>Leaderboards</h2>
+    </Page>
+  );
 };
