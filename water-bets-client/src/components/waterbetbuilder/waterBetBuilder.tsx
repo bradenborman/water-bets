@@ -171,95 +171,92 @@ export const WaterBetBuilder: React.FC<WaterBetBuilderProps> = (
 
   return (
     <Page id="water-bet-builder" topPadding={true}>
-      <Card className="create-bet-card">
-        <Form onSubmit={handleSubmit}>
-          <Row className="mt-3">
-            <Col>
-              <InputGroup>
-                {buildPrefixDropDownItems()}
-                <InputGroup.Text id="basic-addon2">
-                  {activePrefix}
-                </InputGroup.Text>
-                <Form.Control
-                  // as="textarea"
-                  aria-label="user-defined-water-bet"
-                  required
-                  type="text"
-                  value={userDefinedWaterBet}
-                  onChange={e => setUserDefinedWaterBet(e.target.value)}
-                />
-              </InputGroup>
-            </Col>
-          </Row>
-          <Row className="mt-3">
-            <Col md={4}>
-              Group
-              {buildGroupSelect()}
-            </Col>
-            <Col md={4}>
-              Offer Water Bet to
-              {buildUserSelect()}
-            </Col>
-            <Col md={3}>
-              Set offer to Expire:{" "}
+      <Form onSubmit={handleSubmit}>
+        <Row className="mt-3">
+          <Col>
+            <InputGroup>
+              {buildPrefixDropDownItems()}
+              <InputGroup.Text id="basic-addon2">
+                {activePrefix}
+              </InputGroup.Text>
               <Form.Control
+                // as="textarea"
+                aria-label="user-defined-water-bet"
                 required
-                type="datetime-local"
-                id="expirationDatetime"
-                min={rightNow()}
-                max={weekFromNow()}
-                step={60000}
-                value={offerExpires}
-                onChange={e => {
-                  setOfferExpires(e.target.value);
-                }}
-              ></Form.Control>
-            </Col>
-          </Row>
-          <Row className="mt-3">
-            <Col md={4}>
-              <Form.Label>Droplets I want to wager</Form.Label>
-              <InputGroup>
-                <InputGroup.Text id="my-wager">
-                  <FontAwesomeIcon className="fa-droplet" icon={faDroplet} />
-                </InputGroup.Text>
-                <Form.Control
-                  className="wager-input"
-                  type="text"
-                  value={offerersWagerAmount}
-                  onChange={handleOfferersWagerChange}
-                  aria-label="Droplets I want to wager"
-                  aria-describedby="my-wager"
-                />
-              </InputGroup>
-            </Col>
-            <Col md={4}>
-              <Form.Label>Droplets I would win</Form.Label>
-              <InputGroup>
-                <InputGroup.Text id="their-wager">
-                  <FontAwesomeIcon className="fa-droplet" icon={faDroplet} />
-                </InputGroup.Text>
-                <Form.Control
-                  className="wager-input"
-                  type="text"
-                  disabled={!(Number.parseInt(selectedUserId) > 0)}
-                  value={receiversWagerAmount}
-                  onChange={handleRecieversWagerChange}
-                  aria-label="Droplets I would win"
-                  aria-describedby="their-wager"
-                />
-              </InputGroup>
-            </Col>
-          </Row>
-          <Row>
-            <Col className="submitCol">
-              <Button id="submitBtn" type="submit">
-                Send Offer
-              </Button>
-            </Col>
-          </Row>
-        </Form>
-      </Card>
+                type="text"
+                value={userDefinedWaterBet}
+                onChange={e => setUserDefinedWaterBet(e.target.value)}
+              />
+            </InputGroup>
+          </Col>
+        </Row>
+        <Row className="mt-3">
+          <Col md={4}>
+            Group
+            {buildGroupSelect()}
+          </Col>
+          <Col md={4}>
+            Offer Water Bet to
+            {buildUserSelect()}
+          </Col>
+          <Col md={3}>
+            Set offer to Expire:{" "}
+            <Form.Control
+              required
+              type="datetime-local"
+              id="expirationDatetime"
+              min={rightNow()}
+              max={weekFromNow()}
+              value={offerExpires}
+              onChange={e => {
+                setOfferExpires(e.target.value);
+              }}
+            ></Form.Control>
+          </Col>
+        </Row>
+        <Row className="mt-3">
+          <Col md={4}>
+            <Form.Label>Droplets I want to wager</Form.Label>
+            <InputGroup>
+              <InputGroup.Text id="my-wager">
+                <FontAwesomeIcon className="fa-droplet" icon={faDroplet} />
+              </InputGroup.Text>
+              <Form.Control
+                className="wager-input"
+                type="text"
+                value={offerersWagerAmount}
+                onChange={handleOfferersWagerChange}
+                aria-label="Droplets I want to wager"
+                aria-describedby="my-wager"
+              />
+            </InputGroup>
+          </Col>
+          <Col md={4}>
+            <Form.Label>Droplets I would win</Form.Label>
+            <InputGroup>
+              <InputGroup.Text id="their-wager">
+                <FontAwesomeIcon className="fa-droplet" icon={faDroplet} />
+              </InputGroup.Text>
+              <Form.Control
+                className="wager-input"
+                type="text"
+                disabled={!(Number.parseInt(selectedUserId) > 0)}
+                value={receiversWagerAmount}
+                onChange={handleRecieversWagerChange}
+                aria-label="Droplets I would win"
+                aria-describedby="their-wager"
+              />
+            </InputGroup>
+          </Col>
+        </Row>
+        <Row>
+          <Col className="submitCol">
+            <Button id="submitBtn" type="submit">
+              Send Offer
+            </Button>
+          </Col>
+        </Row>
+      </Form>
     </Page>
   );
 };

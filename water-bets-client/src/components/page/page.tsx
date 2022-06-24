@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { LoggedInNavbar } from "../navbar/loggedInNavbar";
 import Container from "react-bootstrap/Container";
 import classNames from "classnames/bind";
+import { Nav } from "react-bootstrap";
 
 export interface PageProps {
   id: string;
