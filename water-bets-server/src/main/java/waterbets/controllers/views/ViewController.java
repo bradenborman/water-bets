@@ -15,7 +15,8 @@ public class ViewController {
             "/home",
             "/how-to-play",
             "/group-search",
-            "/create-water-bet"
+            "/create-water-bet",
+            "/leaderboard"
     })
     public String view() {
         return "index";

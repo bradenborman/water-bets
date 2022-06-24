@@ -56,8 +56,8 @@ task copyClient(dependsOn: ":water-bets-client:clientBuild") {
 			from new File(project(":water-bets-client").getProjectDir(), "build/index.html")
 			into "src/main/resources/templates"
 		}
-		copy { //Parttime
-			from new File(project(":water-bets-client").getProjectDir(), "build/login.html")
+		copy {
+			from new File(project(":water-bets-client").getProjectDir(), "build/error.html")
 			into "src/main/resources/templates"
 		}
 	}

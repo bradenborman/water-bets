@@ -79,6 +79,12 @@ export const HomePage: React.FC<LandingPageProps> = (
                 </tbody>
               </Table>
             </Tab>
+            <Tab eventKey="helpSettle" title="Help Settle">
+              <h3>
+                Please review the water bets below as they two parties involved
+                disagreed on the winner.
+              </h3>
+            </Tab>
           </Tabs>
         </Col>
       </Row>

@@ -40,12 +40,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .successHandler(loginSuccessHandler);
 
-        http.rememberMe()
-                .alwaysRemember(true)
-                .key("1063")
-                .rememberMeCookieName("remember-me-auto-login")
-                .tokenValiditySeconds(10000000);
-
     }
 
 }
