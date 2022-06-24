@@ -36,7 +36,7 @@ export const HomePage: React.FC<LandingPageProps> = (
               title={
                 <>
                   <FontAwesomeIcon icon={faMailBulk} /> Offers Received{" "}
-                  <span className="number-badge">1</span>
+                  <span className="number-badge">3</span>
                 </>
               }
             >
@@ -47,7 +47,7 @@ export const HomePage: React.FC<LandingPageProps> = (
               title={
                 <>
                   <FontAwesomeIcon icon={faMailForward} /> Offers I sent{" "}
-                  <span className="number-badge">3</span>
+                  <span className="number-badge">1</span>
                 </>
               }
             >
