@@ -7,6 +7,8 @@ import {
   Row,
   Col
 } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMailBulk } from "@fortawesome/free-solid-svg-icons";
 
 export interface OffersReceivedProps {}
 
@@ -21,9 +23,11 @@ export const OffersReceived: React.FC<OffersReceivedProps> = (
           <Table striped bordered hover>
             <thead>
               <tr>
-                <th>From</th>
+                <th>
+                  <FontAwesomeIcon icon={faMailBulk} /> From
+                </th>
                 <th>Water Bet</th>
-                <th>My Cost</th>
+                <th>Cost to Accept</th>
                 <th>To Win</th>
                 <th>Expires</th>
                 <th></th>
@@ -44,10 +48,13 @@ export const OffersReceived: React.FC<OffersReceivedProps> = (
                     as={ButtonGroup}
                     variant="link"
                     title="Reply"
-                    id="bg-vertical-dropdown-1"
+                    id=""
                   >
                     <Dropdown.Item eventKey="1">Accept Offer</Dropdown.Item>
                     <Dropdown.Item eventKey="2">Deline Offer</Dropdown.Item>
+                    <Dropdown.Item eventKey="2">
+                      Deline With Comment
+                    </Dropdown.Item>
                   </DropdownButton>
                 </td>
               </tr>
@@ -68,6 +75,9 @@ export const OffersReceived: React.FC<OffersReceivedProps> = (
                   >
                     <Dropdown.Item eventKey="1">Accept Offer</Dropdown.Item>
                     <Dropdown.Item eventKey="2">Deline Offer</Dropdown.Item>
+                    <Dropdown.Item eventKey="2">
+                      Deline With Comment
+                    </Dropdown.Item>
                   </DropdownButton>
                 </td>
               </tr>
@@ -81,9 +91,11 @@ export const OffersReceived: React.FC<OffersReceivedProps> = (
           <Table striped bordered hover>
             <thead>
               <tr>
-                <th>From</th>
+                <th>
+                  <FontAwesomeIcon icon={faMailBulk} /> From
+                </th>
                 <th>Water Bet</th>
-                <th>My Cost</th>
+                <th>Cost to Accept</th>
                 <th>To Win</th>
                 <th>Expires</th>
                 <th></th>
@@ -101,10 +113,13 @@ export const OffersReceived: React.FC<OffersReceivedProps> = (
                     as={ButtonGroup}
                     variant="link"
                     title="Reply"
-                    id="bg-vertical-dropdown-1"
+                    id=""
                   >
                     <Dropdown.Item eventKey="1">Accept Offer</Dropdown.Item>
                     <Dropdown.Item eventKey="2">Deline Offer</Dropdown.Item>
+                    <Dropdown.Item eventKey="2">
+                      Deline With Comment
+                    </Dropdown.Item>
                   </DropdownButton>
                 </td>
               </tr>

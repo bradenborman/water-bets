@@ -13,7 +13,8 @@ import {
 } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMailForward, faMailBulk } from "@fortawesome/free-solid-svg-icons";
-import { OffersReceived } from "./offerTable/offersReceived";
+import { OffersReceived } from "./offertabs/offersReceived";
+import { OffersSent } from "./offertabs/offersSent";
 
 export interface LandingPageProps {
   userSignedIn?: string;
@@ -51,40 +52,9 @@ export const HomePage: React.FC<LandingPageProps> = (
                 </>
               }
             >
-              <Table striped bordered hover>
-                <thead>
-                  <tr>
-                    <th>To</th>
-                    <th>Water Bet</th>
-                    <th>My Cost</th>
-                    <th>To Win</th>
-                    <th>Expires</th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Brendan Borman</td>
-                    <td>Gabe Davis will be a pro bowler in 2022/23</td>
-                    <td>5</td>
-                    <td>5</td>
-                    <td>21 Days</td>
-                    <td>
-                      <DropdownButton
-                        as={ButtonGroup}
-                        variant="link"
-                        title="Reply"
-                        id="bg-vertical-dropdown-1"
-                      >
-                        <Dropdown.Item eventKey="1">Accept Offer</Dropdown.Item>
-                        <Dropdown.Item eventKey="2">Deline Offer</Dropdown.Item>
-                      </DropdownButton>
-                    </td>
-                  </tr>
-                </tbody>
-              </Table>
+              {<OffersSent />}
             </Tab>
-            <Tab eventKey="helpSettle" title={<>Help Settle</>}></Tab>
+            <Tab eventKey="helpSettle" title={<>Settle</>}></Tab>
           </Tabs>
         </Col>
       </Row>

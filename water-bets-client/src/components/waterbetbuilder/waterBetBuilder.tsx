@@ -17,11 +17,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Group from "../../models/group";
 import isValidWagerInput from "../../utilities/validWagerEntryUtility";
-import {
-  threeHoursFromNow,
-  rightNow,
-  weekFromNow
-} from "../../utilities/dataTimeUtility";
 
 var data: Group[] = require("./test-data.json");
 
@@ -38,6 +33,16 @@ export const WaterBetBuilder: React.FC<WaterBetBuilderProps> = (
     "By the end of the week, the following will happen: "
   ];
 
+  const expireOfferOptions: string[] = [
+    "1 hour",
+    "3 hours",
+    "8 hours",
+    "1 day",
+    "2 days",
+    "3 days",
+    "1 week"
+  ];
+
   const [activePrefix, setActivePrefix] = useState<string>(prefixes[0]);
   const [userDefinedWaterBet, setUserDefinedWaterBet] = useState<string>();
 
@@ -50,7 +55,7 @@ export const WaterBetBuilder: React.FC<WaterBetBuilderProps> = (
 
   const [offerersWagerAmount, setOfferersWagerAmount] = useState<string>("0");
   const [receiversWagerAmount, setReceiversWagerAmount] = useState<string>("0");
-  const [offerExpires, setOfferExpires] = useState<string>(threeHoursFromNow());
+  const [offerExpires, setOfferExpires] = useState<string>("defaultValue");
 
   const buildPrefixDropDownItems = (): JSX.Element => {
     const items = prefixes.map((text, index) => (
@@ -141,6 +146,30 @@ export const WaterBetBuilder: React.FC<WaterBetBuilderProps> = (
     );
   };
 
+  const buildExpireOptionsSelect = (): JSX.Element => {
+    const _expireOptions: JSX.Element[] | JSX.Element = expireOfferOptions.map(
+      (option, index) => (
+        <option key={index} value={option}>
+          {option}
+        </option>
+      )
+    );
+
+    return (
+      <Form.Select
+        onChange={e => {
+          setOfferExpires(e.target.value);
+        }}
+        value={offerExpires}
+      >
+        <option value="defaultValue" disabled>
+          Select an Expire option
+        </option>
+        {_expireOptions}
+      </Form.Select>
+    );
+  };
+
   const handleOfferersWagerChange = (e: any): void => {
     if (isValidWagerInput(e.target.value)) {
       setOfferersWagerAmount(e.target.value);
@@ -201,20 +230,7 @@ export const WaterBetBuilder: React.FC<WaterBetBuilderProps> = (
             Offer Water Bet to
             {buildUserSelect()}
           </Col>
-          <Col md={3}>
-            Set offer to Expire:{" "}
-            <Form.Control
-              required
-              type="datetime-local"
-              id="expirationDatetime"
-              min={rightNow()}
-              max={weekFromNow()}
-              value={offerExpires}
-              onChange={e => {
-                setOfferExpires(e.target.value);
-              }}
-            ></Form.Control>
-          </Col>
+          <Col md={3}>Offer Expires: {buildExpireOptionsSelect()}</Col>
         </Row>
         <Row className="mt-3">
           <Col md={4}>
