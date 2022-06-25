@@ -35,14 +35,14 @@ export const OffersSent: React.FC<OffersSentProps> = (
             </thead>
             <tbody>
               <tr>
-                <td>Brendan Borman</td>
+                <td>Erik Meyer</td>
                 <td>
-                  I believe that Nico Collins will have no more than 4 tds this
-                  year
+                  Josh Jacobs will outscore Miles Sanders in 2022 Fantasy
+                  Rankings
                 </td>
-                <td>20</td>
+                <td>5</td>
                 <td>10</td>
-                <td>14 Days</td>
+                <td>3 Days</td>
                 <td>
                   <DropdownButton
                     as={ButtonGroup}

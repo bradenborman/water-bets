@@ -13,6 +13,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import Loader from "react-loader-spinner";
 import { CreateGroupModal } from "./createGroupModal";
+import { simulateWait } from "../../utilities/mockUtility";
 
 export interface GroupSearchProps {}
 
@@ -21,44 +22,51 @@ export const GroupSearch: React.FC<GroupSearchProps> = (
 ) => {
   const [groupNameToSearch, setGroupNameToSearch] = useState<string>("");
   const [groupResultsFound, setGoupResultsFound] = useState<any>();
+  const [isLoadingGroupSearch, setIsLoadingGroupSearch] = useState<boolean>(
+    false
+  );
 
   //Create Group Modal
   const [show, setShow] = useState<boolean>(false);
 
   const handleGroupSearch = (e: any) => {
     e.preventDefault();
+    setIsLoadingGroupSearch(true);
 
-    //call the API and get results that match
-    setGoupResultsFound([
-      {
-        groupId: 1,
-        groupName: "Not Arizona State",
-        passwordProtected: true,
-        membersCount: 6,
-        joined: false
-      },
-      {
-        groupId: 2,
-        groupName: "Geek Squad University",
-        passwordProtected: false,
-        membersCount: 8,
-        joined: false
-      },
-      {
-        groupId: 3,
-        groupName: "G-Unit",
-        passwordProtected: false,
-        membersCount: 5,
-        joined: true
-      },
-      {
-        groupId: 4,
-        groupName: "Taco tacks",
-        passwordProtected: true,
-        membersCount: 4,
-        joined: false
-      }
-    ]);
+    simulateWait(750).then(() => {
+      //call the API and get results that match
+      setIsLoadingGroupSearch(false);
+      setGoupResultsFound([
+        {
+          groupId: 1,
+          groupName: "Not Arizona State",
+          passwordProtected: true,
+          membersCount: 6,
+          joined: false
+        },
+        {
+          groupId: 2,
+          groupName: "Geek Squad University",
+          passwordProtected: false,
+          membersCount: 8,
+          joined: false
+        },
+        {
+          groupId: 3,
+          groupName: "G-Unit",
+          passwordProtected: false,
+          membersCount: 5,
+          joined: true
+        },
+        {
+          groupId: 4,
+          groupName: "Taco tacks",
+          passwordProtected: true,
+          membersCount: 4,
+          joined: false
+        }
+      ]);
+    });
   };
 
   const handleJoinGroup = (e: any): void => {
@@ -76,7 +84,7 @@ export const GroupSearch: React.FC<GroupSearchProps> = (
 
     const groupSearchLoading = (): JSX.Element => {
       return (
-        <div id="groupSearchLoading">
+        <div className="groupSearchLoading">
           <Loader type="ThreeDots" color="#00BFFF" height={80} width={80} />
         </div>
       );
@@ -123,9 +131,9 @@ export const GroupSearch: React.FC<GroupSearchProps> = (
       );
     };
 
-    if (groupResultsFound != undefined && groupResultsFound != null)
+    if (isLoadingGroupSearch) return groupSearchLoading();
+    else if (groupResultsFound != undefined && groupResultsFound != null)
       return buildTable();
-    else if (false) return groupSearchLoading();
     else return preSearchHelp();
   };
 
