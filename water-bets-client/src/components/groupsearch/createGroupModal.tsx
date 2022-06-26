@@ -1,7 +1,4 @@
 import React, { useState } from "react";
-import { LoggedInNavbar } from "../navbar/loggedInNavbar";
-import Container from "react-bootstrap/Container";
-import classNames from "classnames/bind";
 import { Modal, Form, Button, Col, Row } from "react-bootstrap";
 
 export interface CreateGroupModalProps {
@@ -16,6 +13,9 @@ export const CreateGroupModal: React.FC<CreateGroupModalProps> = (
 
   const handleClose = () => props.setShow(false);
   const handleShow = () => props.setShow(true);
+
+  //Submit vars
+  const [submitting, setSubmitting] = useState<boolean>(false);
 
   const handleSubmit = (e: any) => {
     e.preventDefault();

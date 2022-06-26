@@ -8,15 +8,15 @@ import {
   Row,
   Col,
   Button,
-  Card
+  Card,
+  Spinner
 } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faGlassWaterDroplet,
-  faDroplet
-} from "@fortawesome/free-solid-svg-icons";
+import { faDroplet } from "@fortawesome/free-solid-svg-icons";
 import Group from "../../models/group";
 import isValidWagerInput from "../../utilities/validWagerEntryUtility";
+import { simulateWait } from "../../utilities/mockUtility";
+import classNames from "classnames/bind";
 
 var data: Group[] = require("./test-data.json");
 
@@ -56,6 +56,19 @@ export const WaterBetBuilder: React.FC<WaterBetBuilderProps> = (
   const [offerersWagerAmount, setOfferersWagerAmount] = useState<string>("0");
   const [receiversWagerAmount, setReceiversWagerAmount] = useState<string>("0");
   const [offerExpires, setOfferExpires] = useState<string>("defaultValue");
+
+  //Submit vars
+  const [submittingNewWaterBet, setSubmittingNewWaterBet] = useState<boolean>(
+    false
+  );
+  const [
+    submittingNewWaterBetSuccess,
+    setSubmittingNewWaterBetSuccess
+  ] = useState<boolean>(false);
+  const [
+    submittingNewWaterBetFailure,
+    setSubmittingNewWaterBetFailure
+  ] = useState<boolean>(false);
 
   const buildPrefixDropDownItems = (): JSX.Element => {
     const items = prefixes.map((text, index) => (
@@ -198,11 +211,34 @@ export const WaterBetBuilder: React.FC<WaterBetBuilderProps> = (
 
   const handleSubmit = (e: any): void => {
     e.preventDefault();
+    setSubmittingNewWaterBet(true);
+    simulateWait(1000)
+      .then(() => {
+        //ifsuccess
+        setSubmittingNewWaterBetSuccess(true);
+        //if failure
+        // setSubmittingNewWaterBetFailure(true);
+      })
+      .finally(() => {
+        setSubmittingNewWaterBet(false);
+
+        //Clear status out after 2.5 seconds
+        setTimeout(() => {
+          setSubmittingNewWaterBetSuccess(false);
+          setSubmittingNewWaterBetFailure(false);
+        }, 2500);
+      });
   };
 
   return (
     <Page id="water-bet-builder" topPadding={true}>
-      <Form onSubmit={handleSubmit}>
+      <Form
+        onSubmit={handleSubmit}
+        className={classNames(
+          { "successful-submit": submittingNewWaterBetSuccess },
+          { "failed-submit": submittingNewWaterBetFailure }
+        )}
+      >
         <Row className="mt-3">
           <Col>
             <InputGroup>
@@ -270,7 +306,13 @@ export const WaterBetBuilder: React.FC<WaterBetBuilderProps> = (
         <Row>
           <Col className="submitCol">
             <Button id="submitBtn" type="submit">
-              Send Offer
+              {submittingNewWaterBet ? (
+                <Spinner size="sm" animation="border" role="status">
+                  <span className="visually-hidden">Loading...</span>
+                </Spinner>
+              ) : (
+                "Send Offer"
+              )}
             </Button>
           </Col>
         </Row>

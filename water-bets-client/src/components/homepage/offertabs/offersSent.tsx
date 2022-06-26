@@ -20,7 +20,7 @@ export const OffersSent: React.FC<OffersSentProps> = (
       <Row className="mt-5 offer-group">
         <Col>
           <h4>Not Arizona State</h4>
-          <Table striped bordered hover>
+          <Table bordered hover>
             <thead>
               <tr>
                 <th>

@@ -20,7 +20,7 @@ export const OffersReceived: React.FC<OffersReceivedProps> = (
       <Row className="mt-5 offer-group">
         <Col>
           <h4>Not Arizona State</h4>
-          <Table striped bordered hover>
+          <Table bordered hover>
             <thead>
               <tr>
                 <th>
@@ -88,7 +88,7 @@ export const OffersReceived: React.FC<OffersReceivedProps> = (
       <Row className="mt-5 offer-group">
         <Col>
           <h4>Piano Man</h4>
-          <Table striped bordered hover>
+          <Table bordered hover>
             <thead>
               <tr>
                 <th>
@@ -104,7 +104,9 @@ export const OffersReceived: React.FC<OffersReceivedProps> = (
             <tbody>
               <tr>
                 <td>Allen Peterson</td>
-                <td>I believe I get 10+ shiny this next week</td>
+                <td>
+                  I believe I get 10+ kills in our 1 v 1 match next time we play
+                </td>
                 <td>10</td>
                 <td>10</td>
                 <td>3 Days</td>

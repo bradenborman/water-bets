@@ -156,6 +156,7 @@ export const GroupSearch: React.FC<GroupSearchProps> = (
                 <FontAwesomeIcon icon={faSearch} />
               </InputGroup.Text>
               <FormControl
+                value={groupNameToSearch}
                 onChange={e => setGroupNameToSearch(e.target.value)}
                 placeholder="Group Name"
                 aria-label="Group Name"
